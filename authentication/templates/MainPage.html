@@ -50,7 +50,7 @@
                       {% if request.user.is_authenticated %}
                         {% for i in group %}
                           {% if i.name == 'Admin' %}
-                            <a class="dropdown-item" href="{% url 'profiles' %}">All Profiles</a>
+                            <a class="dropdown-item" href="{% url 'institutions_list' %}">All Schools</a>
                             <div class="dropdown-divider"></div>
                           {% elif i.name == 'Teachers' %}
                             <a class="dropdown-item" href="{% url 'teacher_profile' request.user.pk %}">My Profile</a>

@@ -3,7 +3,6 @@ from . import adminviews
 
 urlpatterns = [
 
-    path('profiles/',adminviews.ManageAllProfilesView, name ='profiles'),
 
 
 ]

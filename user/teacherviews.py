@@ -3,6 +3,7 @@ from .models import *
 
 
 
+
 def ManageTeacherProfileView(ProfileView,user):
     group = ProfileView.user.groups.values('name')
     teacher = get_object_or_404(Employ , user = int(user))
@@ -11,7 +12,6 @@ def ManageTeacherProfileView(ProfileView,user):
         'group': group ,
     }
     return render(ProfileView,'Users/Teacher/Profile.html',context)
-
 
 def ManageTeacherDocumentsView(DocumentView,teacher):
     group = DocumentView.user.groups.values('name')
@@ -25,3 +25,9 @@ def ManageTeacherDocumentsView(DocumentView,teacher):
         'group': group ,
     }
     return render(DocumentView,'Users/Teacher/Documents.html',context)
+
+
+
+
+
+
