@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import Group
 
 
 
@@ -52,5 +53,6 @@ class DocumentType(models.Model):
 class StaffType(models.Model):
     code = models.AutoField(primary_key = True , unique = True)
     type = models.CharField(max_length = 250)
+    group = models.ForeignKey(Group , on_delete = models.CASCADE)
     def __str__(self):
         return str(self.type)

@@ -1,13 +1,23 @@
 from django.shortcuts import render , get_list_or_404 , get_object_or_404 , redirect
 from .models import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group , User
+from authentication.user_handeling import unauthenticated_user, allowed_users, admin_only
 
 
 
 
 def ManageTeacherProfileView(ProfileView,user):
     group = ProfileView.user.groups.values('name')
-    teacher = get_object_or_404(Employ , user = int(user))
+    teacher = []
+    abc = get_object_or_404(Employ , user = int(user))
+    for i in Employ.objects.all():
+        if str(i.user.pk) == str(user):
+            teacher = i
+    if teacher == '':
+        teacher = 'No'
     context = {
+        'abc':abc,
         'teacher':teacher,
         'group': group ,
     }

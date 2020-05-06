@@ -1,18 +1,19 @@
 {% extends "MainPage.html" %}
+{% load static %}
 {% block content %}
-    <h1 class="text-center" style="font-family:sans-serif;">All Schools</h1>
+    <br>
+    <h1 class="text-center" style="font-family:sans-serif;">Online Management Application For Government Schools</h1>
+    <br>
+    <br>
     <div class="container">
-    <a href="{% url 'institute_create' %}">Add</a>
         <table class="table table-hover table-sm table-dark">
             <tbody id="myTable" align="center">
                 <tr>
-                    <th>School Code</th>
                     <th>School Name</th>
                 </tr>
-                {% for v in schools %}
+                {% for v in institutions %}
                     <tr>
-                        <td>{{ v.pk }}</td>
-                        <td><a href="{% url 'institution_detail_for_admin' v.pk %}">{{ v.name }}</a></td>
+                        <td><a href="{% url 'institution_detail_for_all' v.pk %}">{{ v.name }}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
