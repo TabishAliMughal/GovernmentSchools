@@ -1,0 +1,22 @@
+{% extends "MainPage.html" %}
+{% block content %}
+    <h1 class="text-center" style="font-family:sans-serif;">All Schools</h1>
+    <div class="container">
+    <a href="{% url 'institute_create' %}">Add</a>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>School Code</th>
+                    <th>School Name</th>
+                </tr>
+                {% for v in schools %}
+                    <tr>
+                        <td>{{ v.pk }}</td>
+                        <td><a href="{% url 'institution_detail' v.pk %}">{{ v.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form action ="{% url 'institute_create' %}" method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:purple";><b>Add School</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Semis Id</th>
+                    <td>{{ user_form.semis_id }}</td>
+                </tr>
+                <tr>
+                    <th>School</th>
+                    <td>{{ user_form.name }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save and Add Another"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a style="background-color:purple; color:white;" class="btn btn-primary" href="{% url 'institutions_list' %}"><b>Back</b></a>
+    </div>
+</form>
+
+
+        
+
+        
+{% endblock %}

@@ -48,3 +48,9 @@ class DocumentType(models.Model):
     documenttype = models.CharField(max_length = 250)
     def __str__(self):
         return str(self.documenttype)
+
+class StaffType(models.Model):
+    code = models.AutoField(primary_key = True , unique = True)
+    type = models.CharField(max_length = 250)
+    def __str__(self):
+        return str(self.type)

@@ -43,6 +43,7 @@ class Employ(models.Model):
     headname = models.CharField(max_length = 50,null=True , blank=True)
     head = models.CharField(max_length = 150,null=True , blank=True)
     training = models.CharField(max_length = 150,null=True , blank=True)
+    type = models.ForeignKey(StaffType , on_delete = models.CASCADE)
     def __str__(self):
         return self.name
 
