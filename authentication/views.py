@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect , HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -30,6 +30,8 @@ def Register(request,id):
 			user.groups.add(group)
 			messages.success(request, 'Account was created for ' + username)
 			return redirect('login')
+		else:
+    			return render(request , 'Authentication/NotValid.html')
 	context = {
 		'type':id,
         'form':form,

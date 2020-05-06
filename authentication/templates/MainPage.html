@@ -55,6 +55,9 @@
                           {% elif i.name == 'Teachers' %}
                             <a class="dropdown-item" href="{% url 'teacher_profile' request.user.pk %}">My Profile</a>
                             <div class="dropdown-divider"></div>
+                          {% elif i.name == 'Clerks' %}
+                            <a class="dropdown-item" href="{% url 'teacher_profile' request.user.pk %}">My Profile</a>
+                            <div class="dropdown-divider"></div>
                           {% endif %}
                         {% endfor %}
                       {% endif %}

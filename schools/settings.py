@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'authentication',
     'main',
     'user',
-    'adminlog',
     'institution',
+    'all',
 ]
 
 MIDDLEWARE = [

@@ -1,14 +1,14 @@
 {% extends "MainPage.html" %}
 {% block content %}
+{% if teacher == 'No' %}
+    <h1 class="text-center" style="font-family:sans-serif;">No Profile Configured</h1>
+    <a class="btn btn-primary">Select Profile</a>
+{% else %}
     <h1 class="text-center" style="font-family:sans-serif;">Your Profile</h1>
     <div class="container">
-        <a class="btn btn-primary" href="{% url 'teacher_documents' teacher.pk %}">Documents</a>
+        <a class="btn btn-primary" href="{% url 'teacher_documents' abc.pk %}">Documents</a>
         <table class="table table-hover table-sm table-dark">
             <tbody id="myTable" align="center">
-                <tr>
-                    <th>Semis Id</th>
-                    <td>{{ teacher.semis_id }}</td>
-                </tr>
                 <tr>
                     <th>Type</th>
                     <td>{{ teacher.type }}</td>
@@ -160,4 +160,5 @@
             </tbody>
         </table>
     </div>
+{% endif %}
 {% endblock %}

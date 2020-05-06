@@ -6,13 +6,12 @@ from django.contrib.auth.models import User
 
 class Employ(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
-    semis_id = models.IntegerField(primary_key=True)
+    persionalnumber = models.IntegerField(primary_key=True)
     name = models.CharField(max_length = 100)
     fathername = models.CharField(max_length = 100)
     gender = models.CharField(max_length=10, choices=(('M', 'Male'),('F', 'Female')))
     designation = models.CharField(max_length=10)
     currentbps = models.IntegerField()
-    persionalnumber = models.IntegerField()
     cnic = models.IntegerField()
     contact = models.IntegerField()
     dateofbirth = models.DateField()
