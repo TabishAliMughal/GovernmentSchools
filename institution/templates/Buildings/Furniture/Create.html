@@ -1,0 +1,50 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:purple";><b>Furniture</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Available For</th>
+                    <td>{{ user_form.therefor }}</td>
+                </tr>
+                <tr>
+                    <th>Desk Quantity</th>
+                    <td>{{ user_form.dualdeskqty }}</td>
+                </tr>
+                <tr>
+                    <th>Cheir Quantity</th>
+                    <td>{{ user_form.chairsqty }}</td>
+                </tr>
+                <tr>
+                    <th>Table Quantity</th>
+                    <td>{{ user_form.tablesqty }}</td>
+                </tr>
+                <tr>
+                    <th>Shelvs Quantity</th>
+                    <td>{{ user_form.shelvesqty }}</td>
+                </tr>
+                <tr>
+                    <th>Locker Quantity</th>
+                    <td>{{ user_form.lockersqty }}</td>
+                </tr>
+                <tr>
+                    <th>Cupboard Quantity</th>
+                    <td>{{ user_form.cupboardqty }}</td>
+                </tr>
+                <tr>
+                    <th>Others</th>
+                    <td>{{ user_form.others }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+{% endblock %}

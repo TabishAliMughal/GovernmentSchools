@@ -32,7 +32,23 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item" href="{% url 'provence_list' %}">Provence</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'division_list' %}">Division</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'district_list' %}">District</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'tehsil_list' %}">Tehsil</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'unioncouncil_list' %}">UnionCouncil</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'qualification_list' %}">Qualification</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'documenttype_list' %}">DocumentType</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'stafftype_list' %}">StaffType</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'roomtype_list' %}">RoomType</a>
                             </div>
                           </li>
                         {% endif %}
@@ -53,10 +69,13 @@
                             <a class="dropdown-item" href="{% url 'institutions_list' %}">All Schools</a>
                             <div class="dropdown-divider"></div>
                           {% elif i.name == 'Teachers' %}
-                            <a class="dropdown-item" href="{% url 'teacher_profile' request.user.pk %}">My Profile</a>
+                            <a class="dropdown-item" href="{% url 'staff_profile' request.user.pk %}">My Profile</a>
                             <div class="dropdown-divider"></div>
                           {% elif i.name == 'Clerks' %}
-                            <a class="dropdown-item" href="{% url 'teacher_profile' request.user.pk %}">My Profile</a>
+                            <a class="dropdown-item" href="{% url 'staff_profile' request.user.pk %}">My Profile</a>
+                            <div class="dropdown-divider"></div>
+                          {% elif i.name == 'SchoolPrincipal' %}
+                            <a class="dropdown-item" href="{% url 'principal_profile' request.user.pk %}">My School</a>
                             <div class="dropdown-divider"></div>
                           {% endif %}
                         {% endfor %}
