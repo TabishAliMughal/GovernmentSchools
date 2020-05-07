@@ -1,0 +1,21 @@
+{% extends "MainPage.html" %}
+{% block content %}
+    <h3 class="text-center" style="font-family:sans-serif;">All {{ name }}</h3>
+    <div class="container">
+    <a href="{% url 'unioncouncil_create' %}">Add</a>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Name</th>
+                    <th>Tehsil</th>
+                </tr>
+                {% for i in unioncouncil %}
+                    <tr>
+                        <th>{{ i.ucname }}</th>
+                        <th>{{ i.tehsil }}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

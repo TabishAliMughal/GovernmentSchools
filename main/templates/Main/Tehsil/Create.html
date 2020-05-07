@@ -1,0 +1,25 @@
+{% extends "MainPage.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <h3 class="text-center" style="font-family:sans-serif;">Creating {{ name }}</h3>
+    <div class="container">
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Tehsilname</th>
+                    <th>{{ form.tehsilname }}</th>
+                </tr>
+                <tr>
+                    <th>District</th>
+                    <th>{{ form.district }} <a href="{% url 'district_create' %}"> +</a></th>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <th><input class="btn btn-primary" type="submit" value="Add"></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+{% endblock %}

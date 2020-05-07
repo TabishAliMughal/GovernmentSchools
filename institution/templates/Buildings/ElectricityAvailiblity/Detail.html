@@ -1,0 +1,58 @@
+{% extends 'MainPage.html' %}
+{% block content %}
+    <div class="container">
+        <h1 style="color:purple";><b>Electricity Detail</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Available</th>
+                    {% if electricity.available == "Y" %}
+                        <td>Yes</td>
+                    {% elif electricity.available == "N" %}
+                        <td>No</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Meter</th>
+                    {% if electricity.meter == "Y" %}
+                        <td>Yes</td>
+                    {% elif electricity.meter == "N" %}
+                        <td>No</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Meter Number</th>
+                    <td>{{ electricity.meterno }}</td>
+                </tr>
+                <tr>
+                    <th>Costumer Number</th>
+                    <td>{{ electricity.consumerno }}</td>
+                </tr>
+                <tr>
+                    <th>Contact Account Number</th>
+                    <td>{{ electricity.contactaccnp }}</td>
+                </tr>
+                <tr>
+                    <th>Kunda</th>
+                    {% if electricity.kunda == "Y" %}
+                        <td>Yes</td>
+                    {% elif electricity.kunda == "N" %}
+                        <td>No</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Solar Panels</th>
+                    {% if electricity.solar == "Y" %}
+                        <td>Yes</td>
+                    {% elif electricity.solar == "N" %}
+                        <td>No</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Solar Panel Quantity</th>
+                    <td>{{ electricity.solarqty }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "MainPage.html" %}
+{% load static %}
+{% block content %}
+    <br>
+    <h1 class="text-center" style="font-family:sans-serif;">Online Management Application For Government Schools</h1>
+    <br>
+    <br>
+    <div class="container">
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>School Name</th>
+                </tr>
+                {% for v in institutions %}
+                    <tr>
+                        <td><a href="{% url 'institution_detail_for_all' v.pk %}">{{ v.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

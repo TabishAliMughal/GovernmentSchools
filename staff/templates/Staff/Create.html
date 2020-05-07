@@ -1,0 +1,165 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:purple";><b>Add {{ type }}</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Name </th>
+                    <td>{{ user_form.name }}</td>
+                </tr>
+                <tr>
+                    <th>Father Name </th>
+                    <td>{{ user_form.fathername }}</td>
+                </tr>
+                <tr>
+                    <th>Gender </th>
+                    <td>{{ user_form.gender }}</td>
+                </tr>
+                <tr>
+                    <th>Designation </th>
+                    <td>{{ user_form.designation }}</td>
+                </tr>
+                <tr>
+                    <th>BPS </th>
+                    <td>{{ user_form.currentbps }}</td>
+                </tr>
+                <tr>
+                    <th>Persnal Number </th>
+                    <td>{{ user_form.persionalnumber }}</td>
+                </tr>
+                <tr>
+                    <th>CNIC </th>
+                    <td>{{ user_form.cnic }}</td>
+                </tr>
+                <tr>
+                    <th>Contact </th>
+                    <td>{{ user_form.contact }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth </th>
+                    <td><input type="date" name="dateofbirth"/></td>
+                </tr>
+                
+                <tr>
+                    <th>Date of Application</th>
+                    <td><input type="date" name="dateofapplication"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Join</th>
+                    <td><input type="date" name="dateofjoin"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Medical</th>
+                    <td><input type="date" name="dateofmedical"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Regularistation</th>
+                    <td><input type="date" name="dateofregularistation"/></td>
+                </tr>
+                <tr>
+                    <th>BPS at First Join</th>
+                    <td>{{ user_form.bpsatfirstjoin }}</td>
+                </tr>
+                <tr>
+                    <th>Qualification</th>
+                    <td>{{ user_form.qualification }}</td>
+                </tr>
+                <tr>
+                    <th>Domicile</th>
+                    <td>{{ user_form.domicile }}</td>
+                </tr>
+                <tr>
+                    <th>Matric Passing Year</th>
+                    <td>{{ user_form.matricpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Inter Passing Year</th>
+                    <td>{{ user_form.interpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Graduation Passing Year</th>
+                    <td>{{ user_form.graduationyear }}</td>
+                </tr>
+                <tr>
+                    <th>Other Academics</th>
+                    <td>{{ user_form.otheraccademics }}</td>
+                </tr>
+                <tr>
+                    <th>BE.D Passing Year</th>
+                    <td>{{ user_form.bedpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Bed Result Date</th>
+                    <td><input type="date" name="bedresultdate"/></td>
+                </tr>
+                <tr>
+                    <th>Other Professional Qualification</th>
+                    <td>{{ user_form.otherprofessionalqualification }}</td>
+                </tr>
+                <tr>
+                    <th>Biometric Verified</th>
+                    <td>{{ user_form.biometricverified }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ user_form.status }}</td>
+                </tr>
+                <tr>
+                    <th>Inter District Transffer</th>
+                    <td>{{ user_form.interdistricttransfer }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Join In Division</th>
+                    <td><input type="date" name="dateofjoinindivision"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Retirement</th>
+                    <td><input type="date" name="dateofretirement"/></td>
+                </tr>
+                <tr>
+                    <th>Remarks</th>
+                    <td>{{ user_form.remarks }}</td>
+                </tr>
+                <tr>
+                    <th>UC</th>
+                    <td>{{ user_form.uc }}</td>
+                </tr>
+                <tr>
+                    <th>Prefix</th>
+                    <td>{{ user_form.prefix }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ user_form.address }}</td>
+                </tr>
+                <tr>
+                    <th>Head Name</th>
+                    <td>{{ user_form.headname }}</td>
+                </tr>
+                <tr>
+                    <th>Head</th>
+                    <td>{{ user_form.head }}</td>
+                </tr>
+                <tr>
+                    <th>Training</th>
+                    <td>{{ user_form.training }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save and Add Another"></td>
+                </tr>
+            </tbody>
+        </table>
+        {% comment %} <a style="background-color:purple; color:white;" class="btn btn-primary" href="{% url 'staff_select' %}"><b>Back</b></a> {% endcomment %}
+    </div>
+</form>
+
+
+        
+
+        
+{% endblock %}
