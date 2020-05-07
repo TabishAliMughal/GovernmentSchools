@@ -1,0 +1,30 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:purple";><b>Toilets</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Available</th>
+                    <td>{{ user_form.available }}</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>{{ user_form.qty }}</td>
+                </tr>
+                <tr>
+                    <th>Functional</th>
+                    <td>{{ user_form.functionalqty }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save and Add Another"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+{% endblock %}

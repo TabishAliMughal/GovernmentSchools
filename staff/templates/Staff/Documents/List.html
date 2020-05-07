@@ -1,0 +1,18 @@
+{% extends "MainPage.html" %}
+{% load static %}
+{% block content %}
+    <h1 class="text-center" style="font-family:sans-serif;">Your Documents</h1>
+    <div class="container">
+        {% if request.user.is_authenticated %}
+            {% for i in group %}
+            {% if i.name == 'Admin' %}
+                <a href="{% url 'staff_documents_create' staff %}">Add</a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% for i in picture %}
+            <h5 class="text-center" style="font-family:sans-serif;">{{ i.type }}</h5><br>
+            <h5 class="text-center" style="font-family:sans-serif;"><img src="{% static './' %}{{ i.url }}" width="800px"></h5><br>
+        {% endfor %}
+    </div>
+{% endblock %}

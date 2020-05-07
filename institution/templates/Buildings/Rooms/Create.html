@@ -1,0 +1,34 @@
+{% extends 'MainPage.html' %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:purple";><b>Rooms</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                <tr>
+                    <th>Room Type</th>
+                    <td>{{ user_form.roomtype }}</td>
+                </tr>
+                <tr>
+                    <th>For</th>
+                    <td>{{ user_form.therefor }}</td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td>{{ user_form.rooms }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save and Add Another"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+
+        
+
+        
+{% endblock %}

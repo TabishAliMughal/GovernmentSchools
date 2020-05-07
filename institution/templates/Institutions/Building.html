@@ -1,0 +1,224 @@
+{% extends "Institutions/HeadSelect.html" %}
+{% block content1 %}
+    <h3 class="text-center" style="font-family:sans-serif;">Building Information</h3>
+    <div class="container">
+        <a href="{% url 'building_info_add' school.pk %}">Add</a>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center">
+                {% for i in Rooms %}
+                <tr>
+                    <th>Rooms ({{ i.roomtype }} )</th>
+                    {% if i.therefor == 'S' %}
+                        <td>For Students</td>
+                    {% elif i.therefor == 'T' %}
+                        <td>For Staff</td>
+                    {% endif %}
+                    <td>{{ i.rooms }}</td>
+                </tr>
+                {% endfor %}
+                {% for i in BoundaryWall %}
+                <tr>
+                    <th>Boundary Wall</th>
+                    {% if i.available == 'Y' %}
+                        <td>Available</td>
+                    {% endif %}
+                    {% if i.ifyes == 'C' %}
+                        <td>Complete</td>
+                    {% elif i.ifyes == 'I' %}
+                        <td>InComplete</td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                {% for i in BuildingCondition %}
+                <tr>
+                    <th>Building Condition</th>
+                    {% if i.condition == 'G' %}
+                        <td>Good</td>
+                        <td>Not Repairable</td>
+                    {% elif i.condition == 'R' %}
+                        <td>Repairable</td>
+                        {% if i.ifrepairable == 'F' %}
+                            <td>Floor</td>
+                        {% elif i.ifrepairable == 'R' %}
+                            <td>Roof</td>
+                        {% elif i.ifrepairable == 'W' %}
+                            <td>Walls</td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                {% for i in Area %}
+                <tr>
+                    <th>Area</th>
+                    <td>Length = {{ i.length }} Width = {{ i.width }}</td>
+                    <td></td>
+                    {% endfor %}
+                </tr>
+                {% for i in WaterAvailiblity %}
+                <tr>
+                    <th>Water Available</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.availabletype == 'D' %}
+                            <td>Drinking</td>
+                        {% elif i.availabletype == 'N' %}
+                            <td>Non-Drinking</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                {% for i in ROPlantAvailiblity %}
+                <tr>
+                    <th>RO Plant Available</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.type == 'F' %}
+                            <td>Functional</td>
+                        {% elif i.type == 'N' %}
+                            <td>Non-Functional</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+                {% for i in WaterDispenserAvailiblity %}
+                <tr>
+                    <th>Water Dispenser Available</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.type == 'E' %}
+                            <td>Electric-Chiller ( {{ i.qty }} )</td>
+                        {% elif i.type == 'C' %}
+                            <td>Cooler ( {{ i.qty }} )</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in PlayGround %}
+                <tr>
+                    <th>Play Ground</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.type == 'H' %}
+                            <td>Huge</td>
+                        {% elif i.type == 'N' %}
+                            <td>Normal</td>
+                        {% elif i.type == 'S' %}
+                            <td>Small</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in Plantation %}
+                <tr>
+                    <th>Plantation</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        <td>Trees = {{ i.qtyoftrees }} , Plants = {{ i.qtyofplants }}</td>
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in ToiletAvailiblity %}
+                <tr>
+                    <th>Toilet Availiblity</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        <td>{{ i.functionalqty }}</td>
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in WiringAvailiblity %}
+                <tr>
+                    <th>Wiring Availiblity</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.condition == 'G' %}
+                            <td>Good</td>
+                        {% elif i.condition == 'R' %}
+                            <td>Repairable</td>
+                        {% elif i.condition == 'D' %}
+                            <td>Dangerous</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in PlumbingAvailiblity %}
+                <tr>
+                    <th>Plumbing</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        {% if i.condition == 'G' %}
+                            <td>Good</td>
+                        {% elif i.condition == 'R' %}
+                            <td>Repairable</td>
+                        {% elif i.condition == 'D' %}
+                            <td>Dangerous</td>
+                        {% endif %}
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in SenitaryAvailiblity %}
+                <tr>
+                    <th>Sanitary Availiblity</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        <td></td>
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in ElectricityAvailiblity %}
+                <tr>
+                    <th>Electricity Availiblity</th>
+                    {% if i.available == 'Y' %}
+                        <td>Yes</td>
+                        <td><a href="{% url 'institution_electricity_availiblity' i.pk %}">See Details</a></td>
+                    {% elif i.available == 'N' %}
+                        <td>No</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% for i in Furniture %}
+                <tr>
+                    <th>Furniture</th>
+                    {% if i.therefor == 'S' %}
+                        <td>Students</td>
+                        <td><a href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
+                    {% elif i.therefor == 'T' %}
+                        <td>Teachers</td>
+                        <td><a href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

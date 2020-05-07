@@ -13,7 +13,7 @@ def ManageMainView(DisplayView):
         'institutions': institutions ,
         'group': group ,
     }
-    return render(DisplayView,'Main/Main.html',context)
+    return render(DisplayView,'All/Main.html',context)
 
 def ManageInstitutionDetailForAllView(DetailView,school):
     group = DetailView.user.groups.values('name')
@@ -22,4 +22,4 @@ def ManageInstitutionDetailForAllView(DetailView,school):
         'school' : school ,
         'group': group ,
     }
-    return render(DetailView,'Main/InstituteDetail.html',context)
+    return render(DetailView,'All/InstituteDetail.html',context)

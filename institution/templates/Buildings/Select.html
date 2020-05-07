@@ -1,0 +1,55 @@
+{% extends "MainPage.html" %}
+{% block content %}
+    <h1 class="text-center" style="font-family:sans-serif;">{{ school.name }}</h1>
+    <div class="container">
+        <table class="table table-hover table-sm table-dark">
+            <tbody align="center">
+                <tr>
+                    <th><a href="{% url 'institution_room_create' school.pk %}">Rooms</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_boundarywall_create' school.pk %}">Boundary Wall</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_condition_create' school.pk %}">Condition</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_area_create' school.pk %}">Area</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_wateravailiblity_create' school.pk %}">Water Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_roplantavailiblity_create' school.pk %}">Ro Plant Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_waterdispenser_create' school.pk %}">Water Dispenser Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_playground_create' school.pk %}">Playground</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_plantation_create' school.pk %}">Plantation</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_toiletavailiblity_create' school.pk %}">Toilet Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_wiringavailiblity_create' school.pk %}">Wiring Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_plumbingavailiblity_create' school.pk %}">Plumbing Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_senitaryavailable_create' school.pk %}">Senitary Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_electricityavailiblity_create' school.pk %}">Electricity Availiblity</a></a></th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'institution_furniture_create' school.pk %}">Furniture Availiblity</a></a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
