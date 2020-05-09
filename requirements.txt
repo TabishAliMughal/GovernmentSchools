@@ -6,3 +6,5 @@ whitenoise==5.0.1
 gunicorn
 pillow
 django-map-widgets
+django-google-maps
+django-location
