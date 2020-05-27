@@ -1,11 +1,11 @@
 {% extends 'MainPage.html' %}
 {% block content %}
     <div class="container">
-        <h1 style="color:purple";><b>Furniture Detail</b></h1>
+        <h1 style="color:#950740";><b>Furniture Detail</b></h1>
         <table class="table table-hover table-sm table-dark">
-            <tbody id="myTable" align="center">
+            <tbody id="myTable" align="center" style="background-color:#C5C6C7; color:black;">
                 <tr>
-                    <th>Available For</th>
+                    <th style="color:#950740";>Available For</th>
                     {% if furniture.therefor == "S" %}
                         <td>Students</td>
                     {% elif furniture.therefor == "T" %}
@@ -13,34 +13,35 @@
                     {% endif %}
                 </tr>
                 <tr>
-                    <th>Desks Quantity</th>
+                    <th style="color:#950740";>Desks Quantity</th>
                     <td>{{ furniture.dualdeskqty }}</td>
                 </tr>
                 <tr>
-                    <th>Chairs Quantity</th>
+                    <th style="color:#950740";>Chairs Quantity</th>
                     <td>{{ furniture.chairsqty }}</td>
                 </tr>
                 <tr>
-                    <th>Tables Quantity</th>
+                    <th style="color:#950740";>Tables Quantity</th>
                     <td>{{ furniture.tablesqty }}</td>
                 </tr>
                 <tr>
-                    <th>Shelves Quantity</th>
+                    <th style="color:#950740";>Shelves Quantity</th>
                     <td>{{ furniture.shelvesqty }}</td>
                 </tr>
                 <tr>
-                    <th>Lockers Quantity</th>
+                    <th style="color:#950740";>Lockers Quantity</th>
                     <td>{{ furniture.lockersqty }}</td>
                 </tr>
                 <tr>
-                    <th>Cupboards Quantity</th>
+                    <th style="color:#950740";>Cupboards Quantity</th>
                     <td>{{ furniture.cupboardqty }}</td>
                 </tr>
                 <tr>
-                    <th>Other Furniture</th>
+                    <th style="color:#950740";>Other Furniture</th>
                     <td>{{ furniture.others }}</td>
                 </tr>
             </tbody>
         </table>
+                <a style="background-color:#950740; color:white;" class="btn btn-primary" href=""><b>Back</b></a>
     </div>
 {% endblock %}

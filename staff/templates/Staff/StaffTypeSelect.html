@@ -1,7 +1,7 @@
-{% extends "Institutions/HeadSelect.html" %}
+{% comment %} {% extends "MainPage.html" %}
 {% block content1 %}
     <div class="container">
-        <table class="table table-hover table-sm table-dark">
+        <table class="table table-hover table-sm table-dark" style="background-color:#950740; color:white;">
             <thead align="center">
             <tr>
                 {% for i in types %}
@@ -13,4 +13,4 @@
     </div>
     {% block content2 %}
     {% endblock %}
-{% endblock %}
+{% endblock %} {% endcomment %}
