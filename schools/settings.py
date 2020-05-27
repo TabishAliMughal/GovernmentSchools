@@ -127,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = '/home/tabish/Documents/MyShop/staticfiles'
+STATIC_ROOT = '/app/staticfiles'
 
 
 STATICFILES_DIRS = [
