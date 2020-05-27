@@ -1,27 +1,37 @@
-{% extends "Staff/StaffTypeSelect.html" %}
-{% block content2 %}
+{% extends "MainPage.html" %}
+{% block content %}
     <h3 class="text-center" style="font-family:sans-serif;">All {{ type }}</h3>
     <div class="container">
-    <a href="{% url 'staff_create' school.pk type.pk %}">Add</a>
-        <table class="table table-hover table-sm table-dark">
-            <tbody id="myTable" align="center">
-                <tr>
+ 
+        <table class="table table-hover table-sm table-dark" style= "background-color:#950740; color:white;">
+            <tbody id="myTable" align="center" >
+                <tr style= "background-color:#950740; color:white;">
                     <th>Name</th>
                     <th>Father</th>
                     <th>Active</th>
+                    
                 </tr>
                 {% for i in teacher %}
-                    <tr>
-                        <td><a href="{% url 'staff_profile' i.user.pk %}">{{ i.name }}</td>
+                    <tr style= "background-color:#C5C6C7; color:black;">
+                        <td><a href="{% url 'staff_detail' school.pk i.pk%}">{{ i.name }}</td>
                         <td>{{ i.fathername }}</td>
                         {% if i.status == 'A' %}
                             <td>Active</td>
                         {% else %}
                             <td>InActive</td>
                         {% endif %}
+                        
+                        <td><a style="color:#950740" href="{% url 'staff_delete' i.pk i.institution.pk  %}">Delete</a></td>
+                        <td><a style="color:#950740" href="{% url 'staff_edit' i.pk i.institution.pk  %}">Edit</a></td>
+                        {% comment %} <td><a style="color:#950740" href="{% url 'staff_detail' school.pk  %}">See Details</a></td> {% endcomment %}
+        
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        {% comment %} <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_upload' school.pk type.pk %}">Upload</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_download' %}">Download CSV Format</a> {% endcomment %}
+    <a style="background-color:#950740; color:white;" class="btn btn-primary"  href="{% url 'staff_create' school.pk type.pk %}">Add</a>
+
     </div>
 {% endblock %}

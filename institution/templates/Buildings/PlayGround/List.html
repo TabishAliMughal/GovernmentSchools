@@ -1,0 +1,32 @@
+{% extends "MainPage.html" %}
+{% block content %}
+    <h3 class="text-center" style="font-family:sans-serif;">{{ school }} Playground </h3>
+    <div class="container">
+    
+        <table class="table table-hover table-sm table-dark;">
+            <tbody id="myTable" align="center">
+                <tr style= "background-color:#950740; color:white;">
+                    <th>Available</th>
+                    <th>Type</th>
+                    {% comment %} <th>Detail</th>
+                    <th>Delete</th>
+                    <th>Edit</th> {% endcomment %}
+                </tr>
+                {% for i in playground %}
+                    <tr style= "background-color:#C5C6C7; color:black;">
+                        <td>{% if i.available == 'Y' %}Yes{% else %} No {% endif %}</td>
+                        <td>{% if i.type == 'H' %}Huge {% elif i.type == 'N'%}Normal{% else %}Small{% endif %}</td>
+                        {% comment %} <td><a style="color:#950740" href="{% url 'student_detail' i.school_name.pk i.gr %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'student_delete' i.school_name.pk i.gr %}">Delete</a></td>
+                        <td><a style="color:#950740" href="{% url 'student_edit' i.school_name.pk i.gr %}">Edit</a></td> {% endcomment %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% comment %} <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_download' %}"><b>Download CSV Format</b></a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_create' school.pk %}">Add</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_upload' school.pk %}">Upload</a> {% endcomment %}
+    <a style="background-color:#950740; color:white;" class="btn btn-primary"  href="{% url 'institution_playground_create' school.pk  %}">Add</a>
+
+    </div>
+{% endblock %}

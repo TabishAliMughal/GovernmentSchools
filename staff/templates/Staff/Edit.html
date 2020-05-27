@@ -1,0 +1,176 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:#950740";><b>Edit {{ user_form.name }}</b></h1>
+        <table class="table table-hover ">
+            <tbody id="myTable" align="center" style="background-color:#C5C6C7; color:black;">
+                <tr hidden>
+                    <th>Type </th>
+                    <td>{{ user_form.type }}</td>
+                </tr>
+                <tr hidden>
+                    <th>User </th>
+                    <td>{{ user_form.user }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Medical</th>
+                    <td>{{ user_form.institution }}</td>
+                </tr>
+                <tr>
+                    <th>Name </th>
+                    <td>{{ user_form.name }}</td>
+                </tr>
+                <tr>
+                    <th>Father Name </th>
+                    <td>{{ user_form.fathername }}</td>
+                </tr>
+                <tr>
+                    <th>Gender </th>
+                    <td>{{ user_form.gender }}</td>
+                </tr>
+                <tr>
+                    <th>Designation </th>
+                    <td>{{ user_form.designation }}</td>
+                </tr>
+                <tr>
+                    <th>BPS </th>
+                    <td>{{ user_form.currentbps }}</td>
+                </tr>
+                <tr>
+                    <th>Persnal Number </th>
+                    <td>{{ user_form.persionalnumber }}</td>
+                </tr>
+                <tr>
+                    <th>CNIC </th>
+                    <td>{{ user_form.cnic }}</td>
+                </tr>
+                <tr>
+                    <th>Contact </th>
+                    <td>{{ user_form.contact }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth {{ dateofbirth }} </th>
+                    <td><input type="date" name="dateofbirth" value="{{dateofbirth}}"/></td>
+                </tr>
+                
+                <tr>
+                    <th>Date of Application {{ dateofapplication }}</th>
+                    <td><input type="date" name="dateofapplication" value="{{ dateofapplication }}"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Join </th>
+                    <td><input type="date" name="dateofjoin" value="{{ dateofjoin }}"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Medical</th>
+                    <td><input type="date" name="dateofmedical" value="{{ dateofmedical }}"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Regularistation</th>
+                    <td><input type="date" name="dateofregularistation" value="{{ dateofregularistation }}"/></td>
+                </tr>
+                <tr>
+                    <th>BPS at First Join</th>
+                    <td>{{ user_form.bpsatfirstjoin }}</td>
+                </tr>
+                <tr>
+                    <th>Qualification</th>
+                    <td>{{ user_form.qualification }}</td>
+                </tr>
+                <tr>
+                    <th>Domicile</th>
+                    <td>{{ user_form.domicile }}</td>
+                </tr>
+                <tr>
+                    <th>Matric Passing Year</th>
+                    <td>{{ user_form.matricpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Inter Passing Year</th>
+                    <td>{{ user_form.interpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Graduation Passing Year</th>
+                    <td>{{ user_form.graduationyear }}</td>
+                </tr>
+                <tr>
+                    <th>Other Academics</th>
+                    <td>{{ user_form.otheraccademics }}</td>
+                </tr>
+                <tr>
+                    <th>BE.D Passing Year</th>
+                    <td>{{ user_form.bedpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th>Bed Result Date</th>
+                    <td><input type="date" name="bedresultdate" value="{{bedresultdate}}"/></td>
+                </tr>
+                <tr>
+                    <th>Other Professional Qualification</th>
+                    <td>{{ user_form.otherprofessionalqualification }}</td>
+                </tr>
+                <tr>
+                    <th>Biometric Verified</th>
+                    <td>{{ user_form.biometricverified }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ user_form.status }}</td>
+                </tr>
+                <tr>
+                    <th>Inter District Transffer</th>
+                    <td>{{ user_form.interdistricttransfer }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Join In Division</th>
+                    <td><input type="date" name="dateofjoinindivision" value="{{dateofjoinindivision}}"/></td>
+                </tr>
+                <tr>
+                    <th>Date of Retirement</th>
+                    <td><input type="date" name="dateofretirement" value="{{ dateofretirement }}"/></td>
+                </tr>
+                <tr>
+                    <th>Remarks</th>
+                    <td>{{ user_form.remarks }}</td>
+                </tr>
+                <tr>
+                    <th>UC</th>
+                    <td>{{ user_form.uc }}</td>
+                </tr>
+                <tr>
+                    <th>Prefix</th>
+                    <td>{{ user_form.prefix }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ user_form.address }}</td>
+                </tr>
+                <tr>
+                    <th>Head Name</th>
+                    <td>{{ user_form.headname }}</td>
+                </tr>
+                <tr>
+                    <th>Head</th>
+                    <td>{{ user_form.head }}</td>
+                </tr>
+                <tr>
+                    <th>Training</th>
+                    <td>{{ user_form.training }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:#950740; color:white;" class="btn btn-primary" type ="submit" value="Save"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+
+        
+
+        
+{% endblock %}

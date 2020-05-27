@@ -1,13 +1,13 @@
 {% extends "Institutions/HeadSelect.html" %}
 {% block content1 %}
-    <h3 class="text-center" style="font-family:sans-serif;">Building Information</h3>
+    <h3 class="text-center" style="font-family:sans-serif; color:#950740;"><b>Building Information</b></h3>
     <div class="container">
-        <a href="{% url 'building_info_add' school.pk %}">Add</a>
-        <table class="table table-hover table-sm table-dark">
-            <tbody id="myTable" align="center">
+       
+        <table class="table table-hover table-sm table-color">
+            <tbody id="myTable" align="center" style= "background-color:#C5C6C7; color:black;">
                 {% for i in Rooms %}
-                <tr>
-                    <th>Rooms ({{ i.roomtype }} )</th>
+                <tr >
+                    <th style= "color:#950740;">Rooms ({{ i.roomtype }} )</th>
                     {% if i.therefor == 'S' %}
                         <td>For Students</td>
                     {% elif i.therefor == 'T' %}
@@ -18,7 +18,7 @@
                 {% endfor %}
                 {% for i in BoundaryWall %}
                 <tr>
-                    <th>Boundary Wall</th>
+                    <th style= "color:#950740;">Boundary Wall</th>
                     {% if i.available == 'Y' %}
                         <td>Available</td>
                     {% endif %}
@@ -31,7 +31,7 @@
                 </tr>
                 {% for i in BuildingCondition %}
                 <tr>
-                    <th>Building Condition</th>
+                    <th style= "color:#950740;">Building Condition</th>
                     {% if i.condition == 'G' %}
                         <td>Good</td>
                         <td>Not Repairable</td>
@@ -49,14 +49,14 @@
                 </tr>
                 {% for i in Area %}
                 <tr>
-                    <th>Area</th>
+                    <th style= "color:#950740;">Area</th>
                     <td>Length = {{ i.length }} Width = {{ i.width }}</td>
                     <td></td>
                     {% endfor %}
                 </tr>
                 {% for i in WaterAvailiblity %}
                 <tr>
-                    <th>Water Available</th>
+                    <th style= "color:#950740;">Water Available</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.availabletype == 'D' %}
@@ -72,7 +72,7 @@
                 </tr>
                 {% for i in ROPlantAvailiblity %}
                 <tr>
-                    <th>RO Plant Available</th>
+                    <th style= "color:#950740;">RO Plant Available</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.type == 'F' %}
@@ -88,7 +88,7 @@
             </tr>
                 {% for i in WaterDispenserAvailiblity %}
                 <tr>
-                    <th>Water Dispenser Available</th>
+                    <th style= "color:#950740;">Water Dispenser Available</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.type == 'E' %}
@@ -104,7 +104,7 @@
                 {% endfor %}
                 {% for i in PlayGround %}
                 <tr>
-                    <th>Play Ground</th>
+                    <th style= "color:#950740;">Play Ground</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.type == 'H' %}
@@ -122,7 +122,7 @@
                 {% endfor %}
                 {% for i in Plantation %}
                 <tr>
-                    <th>Plantation</th>
+                    <th style= "color:#950740;">Plantation</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         <td>Trees = {{ i.qtyoftrees }} , Plants = {{ i.qtyofplants }}</td>
@@ -134,7 +134,7 @@
                 {% endfor %}
                 {% for i in ToiletAvailiblity %}
                 <tr>
-                    <th>Toilet Availiblity</th>
+                    <th style= "color:#950740;">Toilet Availiblity</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         <td>{{ i.functionalqty }}</td>
@@ -146,7 +146,7 @@
                 {% endfor %}
                 {% for i in WiringAvailiblity %}
                 <tr>
-                    <th>Wiring Availiblity</th>
+                    <th style= "color:#950740;">Wiring Availiblity</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.condition == 'G' %}
@@ -164,7 +164,7 @@
                 {% endfor %}
                 {% for i in PlumbingAvailiblity %}
                 <tr>
-                    <th>Plumbing</th>
+                    <th style= "color:#950740;">Plumbing</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         {% if i.condition == 'G' %}
@@ -182,7 +182,7 @@
                 {% endfor %}
                 {% for i in SenitaryAvailiblity %}
                 <tr>
-                    <th>Sanitary Availiblity</th>
+                    <th style= "color:#950740;">Sanitary Availiblity</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
                         <td></td>
@@ -194,10 +194,10 @@
                 {% endfor %}
                 {% for i in ElectricityAvailiblity %}
                 <tr>
-                    <th>Electricity Availiblity</th>
+                    <th style= "color:#950740;">Electricity Availiblity</th>
                     {% if i.available == 'Y' %}
                         <td>Yes</td>
-                        <td><a href="{% url 'institution_electricity_availiblity' i.pk %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'institution_electricity_availiblity' i.pk %}">See Details</a></td>
                     {% elif i.available == 'N' %}
                         <td>No</td>
                         <td></td>
@@ -206,13 +206,13 @@
                 {% endfor %}
                 {% for i in Furniture %}
                 <tr>
-                    <th>Furniture</th>
+                    <th style= "color:#950740;">Furniture</th>
                     {% if i.therefor == 'S' %}
                         <td>Students</td>
-                        <td><a href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
                     {% elif i.therefor == 'T' %}
                         <td>Teachers</td>
-                        <td><a href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'institution_furniture_availiblity' i.pk %}">See Details</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
@@ -220,5 +220,6 @@
                 </tr>
             </tbody>
         </table>
+         <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'building_info_add' school.pk %}">Add</a>
     </div>
 {% endblock %}

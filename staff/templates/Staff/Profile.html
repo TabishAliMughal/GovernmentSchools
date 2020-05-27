@@ -4,157 +4,157 @@
     <h1 class="text-center" style="font-family:sans-serif;">No Profile Configured</h1>
     <a class="btn btn-primary">Select Profile</a>
 {% else %}
-    <h1 class="text-center" style="font-family:sans-serif;">Your Profile</h1>
+    <h1 class="text-center" style="font-family:sans-serif; background-color:#950740; color:white;">Your Profile</h1>
     <div class="container">
-        <a class="btn btn-primary" href="{% url 'staff_documents' abc.pk %}">Documents</a>
+        <a class="btn btn-primary" style="background-color:#950740; color:white;" href="{% url 'staff_documents' abc.pk %}">Documents</a>
         <table class="table table-hover table-sm table-dark">
-            <tbody id="myTable" align="center">
-                <tr>
-                    <th>Type</th>
+            <tbody id="myTable" align="center" style="background-color:#C5C6C7; color:black;" >
+                <tr >
+                    <th style="color:#950740";>Type</th>
                     <td>{{ teacher.type }}</td>
                 </tr>
                 <tr>
-                    <th>Name</th>
+                    <th style="color:#950740";>Name</th>
                     <td>{{ teacher.name }}</td>
                 </tr>
                 <tr>
-                    <th>Father</th>
+                    <th style="color:#950740";>Father</th>
                     <td>{{ teacher.fathername }}</td>
                 </tr>
                 <tr>
-                    <th>Gender</th>
+                    <th style="color:#950740";>Gender</th>
                     <td>{{ teacher.gender }}</td>
                 </tr>
                 <tr>
-                    <th>Designation</th>
+                    <th style="color:#950740";>Designation</th>
                     <td>{{ teacher.designation }}</td>
                 </tr>
                 <tr>
-                    <th>Current BPS</th>
+                    <th style="color:#950740";>Current BPS</th>
                     <td>{{ teacher.currentbps }}</td>
                 </tr>
                 <tr>
-                    <th>Persional Number</th>
+                    <th style="color:#950740";>Persional Number</th>
                     <td>{{ teacher.persionalnumber }}</td>
                 </tr>
                 <tr>
-                    <th>CNIC Number</th>
+                    <th style="color:#950740";>CNIC Number</th>
                     <td>{{ teacher.cnic }}</td>
                 </tr>
                 <tr>
-                    <th>Contact</th>
+                    <th style="color:#950740";>Contact</th>
                     <td>{{ teacher.contact }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Birth</th>
+                    <th style="color:#950740";>Date Of Birth</th>
                     <td>{{ teacher.dateofbirth }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Application</th>
+                    <th style="color:#950740";>Date Of Application</th>
                     <td>{{ teacher.dateofapplication }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Join</th>
+                    <th style="color:#950740";>Date Of Join</th>
                     <td>{{ teacher.dateofjoin }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Medical</th>
+                    <th style="color:#950740";>Date Of Medical</th>
                     <td>{{ teacher.dateofmedical }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Regularistation</th>
+                    <th style="color:#950740";>Date Of Regularistation</th>
                     <td>{{ teacher.dateofregularistation }}</td>
                 </tr>
                 <tr>
-                    <th>BPS At First Join</th>
+                    <th style="color:#950740";>BPS At First Join</th>
                     <td>{{ teacher.bpsatfirstjoin }}</td>
                 </tr>
                 <tr>
-                    <th>Qualification</th>
+                    <th style="color:#950740";>Qualification</th>
                     <td>{{ teacher.qualification }}</td>
                 </tr>
                 <tr>
-                    <th>Domecile</th>
+                    <th style="color:#950740";>Domecile</th>
                     <td>{{ teacher.domicile }}</td>
                 </tr>
                 <tr>
-                    <th>Matric Passing Year</th>
+                    <th style="color:#950740";>Matric Passing Year</th>
                     <td>{{ teacher.matricpassingyear }}</td>
                 </tr>
                 <tr>
-                    <th>Inter Passing Year</th>
+                    <th style="color:#950740";>Inter Passing Year</th>
                     <td>{{ teacher.interpassingyear }}</td>
                 </tr>
                 <tr>
-                    <th>Graduation Year</th>
+                    <th style="color:#950740";>Graduation Year</th>
                     <td>{{ teacher.graduationyear }}</td>
                 </tr>
                 <tr>
-                    <th>Other Accademics</th>
+                    <th style="color:#950740";>Other Accademics</th>
                     <td>{{ teacher.otheraccademics }}</td>
                 </tr>
                 <tr>
-                    <th>B.ED Passing Year</th>
+                    <th style="color:#950740";>B.ED Passing Year</th>
                     <td>{{ teacher.bedpassingyear }}</td>
                 </tr>
                 <tr>
-                    <th>B.ED Result Date</th>
+                    <th style="color:#950740";>B.ED Result Date</th>
                     <td>{{ teacher.bedresultdate }}</td>
                 </tr>
                 <tr>
-                    <th>Other Professional Qualification</th>
+                    <th style="color:#950740";>Other Professional Qualification</th>
                     <td>{{ teacher.otherprofessionalqualification }}</td>
                 </tr>
                 <tr>
-                    <th>Biometric</th>
+                    <th style="color:#950740";>Biometric</th>
                     <td>{{ teacher.biometricverified }}</td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th style="color:#950740";>Status</th>
                     <td>{{ teacher.status }}</td>
                 </tr>
                 <tr>
-                    <th>Inter District Transfer</th>
+                    <th style="color:#950740";>Inter District Transfer</th>
                     <td>{{ teacher.interdistricttransfer }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Join In Division</th>
+                    <th style="color:#950740";>Date Of Join In Division</th>
                     <td>{{ teacher.dateofjoinindivision }}</td>
                 </tr>
                 <tr>
-                    <th>Date Of Retirement</th>
+                    <th style="color:#950740";>Date Of Retirement</th>
                     <td>{{ teacher.dateofretirement }}</td>
                 </tr>
                 <tr>
-                    <th>Remarks</th>
+                    <th style="color:#950740";>Remarks</th>
                     <td>{{ teacher.remarks }}</td>
                 </tr>
                 <tr>
-                    <th>UC</th>
+                    <th style="color:#950740";>UC</th>
                     <td>{{ teacher.uc }}</td>
                 </tr>
                 <tr>
-                    <th>Prefix</th>
+                    <th style="color:#950740";>Prefix</th>
                     <td>{{ teacher.prefix }}</td>
                 </tr>
                 <tr>
-                    <th>Institution</th>
+                    <th style="color:#950740";>Institution</th>
                     <td>{{ teacher.institution }}</td>
                 </tr>
                 <tr>
-                    <th>Address</th>
+                    <th style="color:#950740";>Address</th>
                     <td>{{ teacher.address }}</td>
                 </tr>
                 <tr>
-                    <th>Head Name</th>
+                    <th style="color:#950740";>Head Name</th>
                     <td>{{ teacher.headname }}</td>
                 </tr>
                 <tr>
-                    <th>Head</th>
+                    <th style="color:#950740";>Head</th>
                     <td>{{ teacher.head }}</td>
                 </tr>
                 <tr>
-                    <th>Training</th>
+                    <th style="color:#950740";>Training</th>
                     <td>{{ teacher.training }}</td>
                 </tr>
             </tbody>
