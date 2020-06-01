@@ -4,9 +4,9 @@
 <form method = "POST">
     {% csrf_token %}
     <div class="container">
-        <h1 style="color:purple";><b>Add {{ type }}</b></h1>
+        <h1 style="color:#950740";><b>Add {{ type }}</b></h1>
         <table class="table table-hover table-sm table-dark">
-            <tbody id="myTable" align="center">
+            <tbody id="myTable" align="center" style="background-color:#C5C6C7; color:black;" >
                 <tr>
                     <th>Name </th>
                     <td>{{ user_form.name }}</td>
@@ -40,25 +40,25 @@
                     <td>{{ user_form.contact }}</td>
                 </tr>
                 <tr>
-                    <th>Date of Birth </th>
-                    <td><input type="date" name="dateofbirth"/></td>
+                    <th>Date of Birth {{ dateofbirth }} </th>
+                    <td><input type="date" name="dateofbirth" value="{{dateofbirth}}"/></td>
                 </tr>
                 
                 <tr>
-                    <th>Date of Application</th>
-                    <td><input type="date" name="dateofapplication"/></td>
+                    <th>Date of Application {{ dateofapplication }}</th>
+                    <td><input type="date" name="dateofapplication" value="{{ dateofapplication }}"/></td>
                 </tr>
                 <tr>
-                    <th>Date of Join</th>
-                    <td><input type="date" name="dateofjoin"/></td>
+                    <th>Date of Join </th>
+                    <td><input type="date" name="dateofjoin" value="{{ dateofjoin }}"/></td>
                 </tr>
                 <tr>
                     <th>Date of Medical</th>
-                    <td><input type="date" name="dateofmedical"/></td>
+                    <td><input type="date" name="dateofmedical" value="{{ dateofmedical }}"/></td>
                 </tr>
                 <tr>
                     <th>Date of Regularistation</th>
-                    <td><input type="date" name="dateofregularistation"/></td>
+                    <td><input type="date" name="dateofregularistation" value="{{ dateofregularistation }}"/></td>
                 </tr>
                 <tr>
                     <th>BPS at First Join</th>
@@ -94,7 +94,7 @@
                 </tr>
                 <tr>
                     <th>Bed Result Date</th>
-                    <td><input type="date" name="bedresultdate"/></td>
+                    <td><input type="date" name="bedresultdate" value="{{bedresultdate}}"/></td>
                 </tr>
                 <tr>
                     <th>Other Professional Qualification</th>
@@ -114,11 +114,11 @@
                 </tr>
                 <tr>
                     <th>Date of Join In Division</th>
-                    <td><input type="date" name="dateofjoinindivision"/></td>
+                    <td><input type="date" name="dateofjoinindivision" value="{{dateofjoinindivision}}"/></td>
                 </tr>
                 <tr>
                     <th>Date of Retirement</th>
-                    <td><input type="date" name="dateofretirement"/></td>
+                    <td><input type="date" name="dateofretirement" value="{{ dateofretirement }}"/></td>
                 </tr>
                 <tr>
                     <th>Remarks</th>
@@ -150,11 +150,10 @@
                 </tr>
                 <tr>
                     <th>Action</th>
-                    <td><input style="background-color:purple; color:white;" class="btn btn-primary" type ="submit" value="Save and Add Another"></td>
+                    <td><input style="background-color:#950740; color:white;" class="btn btn-primary" type ="submit" value="Save"></td>
                 </tr>
             </tbody>
         </table>
-        {% comment %} <a style="background-color:purple; color:white;" class="btn btn-primary" href="{% url 'staff_select' %}"><b>Back</b></a> {% endcomment %}
     </div>
 </form>
 

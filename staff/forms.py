@@ -44,7 +44,7 @@ class ManageSchoolStaffCreateForm(forms.ModelForm):
             'headname',
             'head',
             'training',
-            'type',
+            'type'
         }
 
 class ManageStaffDocumentsCreateForm(forms.ModelForm):

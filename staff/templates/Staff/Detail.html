@@ -1,0 +1,166 @@
+{% extends "MainPage.html" %}
+{% block content %}
+{% comment %} {% if teacher == 'No' %}
+    <h1 class="text-center" style="font-family:sans-serif;">No Profile Configured</h1>
+    <a class="btn btn-primary">Select Profile</a>
+{% else %} {% endcomment %}
+    <div class="container">
+    <h1 style="color:#950740";><b> Detail of {{ employ.name }}</b></h1>
+        {% comment %} <a class="btn btn-primary" style="background-color:#950740; color:white;" href="{% url 'staff_documents' abc.pk %}">Documents</a> {% endcomment %}
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center" style="background-color:#C5C6C7; color:black;" >
+                <tr >
+                    <th style="color:#950740";>Type</th>
+                    <td>{{ employ.type }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740;">Name</th>
+                    <td>{{ employ.name }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Father</th>
+                    <td>{{ employ.fathername }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Gender</th>
+                    <td>{{ employ.gender }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Designation</th>
+                    <td>{{ employ.designation }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Current BPS</th>
+                    <td>{{ employ.currentbps }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Persional Number</th>
+                    <td>{{ employ.persionalnumber }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>CNIC Number</th>
+                    <td>{{ employ.cnic }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Contact</th>
+                    <td>{{ employ.contact }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Birth</th>
+                    <td>{{ employ.dateofbirth }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Application</th>
+                    <td>{{ employ.dateofapplication }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Join</th>
+                    <td>{{ employ.dateofjoin }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Medical</th>
+                    <td>{{ employ.dateofmedical }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Regularistation</th>
+                    <td>{{ employ.dateofregularistation }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>BPS At First Join</th>
+                    <td>{{ employ.bpsatfirstjoin }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Qualification</th>
+                    <td>{{ employ.qualification }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Domecile</th>
+                    <td>{{ employ.domicile }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Matric Passing Year</th>
+                    <td>{{ employ.matricpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Inter Passing Year</th>
+                    <td>{{ employ.interpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Graduation Year</th>
+                    <td>{{ employ.graduationyear }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Other Accademics</th>
+                    <td>{{ employ.otheraccademics }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>B.ED Passing Year</th>
+                    <td>{{ employ.bedpassingyear }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>B.ED Result Date</th>
+                    <td>{{ employ.bedresultdate }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Other Professional Qualification</th>
+                    <td>{{ employ.otherprofessionalqualification }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Biometric</th>
+                    <td>{{ employ.biometricverified }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Status</th>
+                    <td>{{ employ.status }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Inter District Transfer</th>
+                    <td>{{ employ.interdistricttransfer }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Join In Division</th>
+                    <td>{{ employ.dateofjoinindivision }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date Of Retirement</th>
+                    <td>{{ employ.dateofretirement }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Remarks</th>
+                    <td>{{ employ.remarks }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>UC</th>
+                    <td>{{ employ.uc }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Prefix</th>
+                    <td>{{ employ.prefix }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Institution</th>
+                    <td>{{ employ.institution }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Address</th>
+                    <td>{{ employ.address }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Head Name</th>
+                    <td>{{ employ.headname }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Head</th>
+                    <td>{{ employ.head }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Training</th>
+                    <td>{{ employ.training }}</td>
+                </tr>
+            </tbody>
+        </table>
+    <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'institution_staff_list' school.pk employ.type.pk%}"><b>Back</b></a>
+
+    </div>
+
+{% endblock %}

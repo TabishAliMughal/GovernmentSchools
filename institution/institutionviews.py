@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group , User
 from authentication.user_handeling import unauthenticated_user, allowed_users, admin_only
 from main.models import *
-from .forms import *
+from news_and_events.models import *
+from news_and_events.forms import *
 from authentication.forms import *
 
 
@@ -26,11 +27,100 @@ def ManageAllInstitutionsListView(ListView):
 def ManageAllInstitutionsDetailForAdminView(DetailView,school):
     group = DetailView.user.groups.values('name')
     school = get_object_or_404(Institution,pk=school)
+    news = []
+    for i in News.objects.all():
+        if str(i.institution.pk) == str(school.pk):
+            news.append(i)
+    activities = []
+    picture = []
+    for j in School_Activities.objects.all():
+        if str(j.institution.pk) == str(school.pk):
+            activities.append({
+                'activity_code' : j.activity_code ,
+                'institution' : j.institution ,
+                'activity_name' : j.activity_name ,
+                'activity_pics' : str(j.activity_pics)[7:] ,
+                'Date' : j.Date ,
+            })
+            # print(j.activity_pics)
+            # print( j.activity_pics)
+            # picture = (str(j.activity_pics)[7:])
+            # picture.append(str(j.activity_pics)[7:])
+    # for i in activities:
+    # print(picture)
+    
     context = {
+        'picture': picture, 
+        'activities': activities,
+        'news':news,
         'school' : school ,
         'group': group ,
     }
     return render(DetailView,'Institutions/HeadSelect.html',context)
+
+
+def ManageNewsCreateView(CreateView,school):
+    group = CreateView.user.groups.values('name')
+    school = get_object_or_404(Institution,pk=school)
+    form = ManageNewsCreateForm()
+    if CreateView.method == 'POST':
+        data = CreateView.POST
+        user_form = ManageNewsCreateForm({
+            'institution' : int(school.pk) ,
+            'news' : data.get('news') ,
+            'date' : data.get('date'),
+
+        })
+        if user_form.is_valid:
+            user_form.save()
+            return redirect('institution_detail_for_admin',int(school.pk))
+        else:
+            return render(CreateView,'Institutions/NotValid.html',{'return':'Not Valid'})
+    else:
+        context = {
+            'user_form' : form ,
+            'school' : school ,
+            'group': group ,
+        }
+    return render(CreateView,'News/create.html',context)
+
+
+def ManageActivityCreateView(CreateView,school):
+    group = CreateView.user.groups.values('name')
+    school = get_object_or_404(Institution,pk=school)
+    form = ManageActivityCreateForm()
+    if CreateView.method == 'POST':
+        data = CreateView.POST
+        user_form = ManageActivityCreateForm({
+            'institution' : int(school.pk) ,
+            'activity_name' : data.get('activity_name') ,
+            'activity_pics' : data.get('activity_pics') ,
+            'Date' : data.get('Date') ,
+
+        },CreateView.FILES)
+        if user_form.is_valid:
+            # print(user_form)
+            user_form.save()
+            return redirect('institution_detail_for_admin',int(school.pk))
+        else:
+            return render(CreateView,'Institutions/NotValid.html',{'return':'Not Valid'})
+    else:
+        context = {
+            'user_form' : form ,
+            'school' : school ,
+            'group': group ,
+        }
+    return render(CreateView,'Activity/create.html',context)
+
+def ManageNewsDeleteView(DeleteView, school, news_code):
+    group = DeleteView.user.groups.values('name')
+    News.objects.filter(news_code=news_code).delete()
+    return redirect('institution_detail_for_admin',school)
+
+def ManageActivityDeleteView(DeleteView, school, activity_code):
+    group = DeleteView.user.groups.values('name')
+    School_Activities.objects.filter(activity_code=activity_code).delete()
+    return redirect('institution_detail_for_admin', school)
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Admin'])
@@ -85,6 +175,7 @@ def ManageInstututeCreateView(CreateView):
 def ManageInstitutionElectricityDetailView(DetailView,electricity):
     group = DetailView.user.groups.values('name')
     electricity = get_object_or_404(InstitutionElectricityAvailiblity,pk=electricity)
+    
     context = {
         'electricity' : electricity ,
         'group': group ,

@@ -1,0 +1,63 @@
+{% extends 'MainPage.html' %}
+{% block content %}
+    <div class="container">
+        <h1 style="color:#950740";><b>Student Detail</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" style="background-color:#C5C6C7; color:black;">
+                <tr>
+                    <th style="color:#950740";>GR</th>
+                    <td>{{ student.gr }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Name</th>
+                    <td>{{ student.name }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Father Name</th>
+                    <td>{{ student.father_name }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Gender</th>
+                    <td>{{ student.gender }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Father CNIC No</th>
+                    <td>{{ student.father_cnic_no }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Father Contact No</th>
+                    <td>{{ student.father_contact_no }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Address</th>
+                    <td>{{ student.address }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Class</th>
+                    <td>{{ student.Class }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date of Birth</th>
+                    <td>{{ student.date_birth }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date of Admission</th>
+                    <td>{{ student.date_admission }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Date of Leaving</th>
+                    <td>{{ student.date_leaving_school }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Reason of Leaving</th>
+                    <td>{{ student.Reason_of_leaving }}</td>
+                </tr>
+                <tr>
+                    <th style="color:#950740";>Religion</th>
+                    <td>{{ student.religion }}</td>
+                </tr>
+            </tbody>
+        </table>
+                <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_list' student.school_name.pk%}"><b>Back</b></a>
+    </div>
+{% endblock %}

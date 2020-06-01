@@ -1,17 +1,62 @@
 {% extends "MainPage.html" %}
+{% load static %}
 {% block content %}
-    <h1 class="text-center" style="font-family:sans-serif;">{{ school.name }}</h1>
+<h3 class="text-center" style="font-family:sans-serif;"> Announcments</h3>
     <div class="container">
-        <table class="table table-hover table-sm table-dark">
-            <tbody align="center">
-                <tr>
-                    <th><a href="{% url 'building_select' school.pk %}">Building</a></a></th>
-                    <th>Students</th>
-                    <th><a href="{% url 'staff_select' school.pk %}">Staff</a></th>
+    
+        <table class="table table-hover table-sm table-dark;">
+            <tbody id="myTable" align="center">
+                <tr style= "background-color:#950740; color:white;">
+                    <th >News</th>
+                    <th >Date</th>
+                    <th>Action</th>
                 </tr>
+                {% for i in news %}
+                    <tr style= "background-color:#C5C6C7; color:black;">
+                        <td>{{ i.news }}</td>
+                        <td>{{ i.date }}</td>
+                        {% comment %} <td><a style="color:#950740" href="{% url 'student_detail' i.school_name.pk i.gr %}">See Details</a></td> {% endcomment %}
+                        {% comment %} <td><a style="color:#950740" href="{% url 'student_edit' i.school_name.pk i.gr %}">Edit</a></td> {% endcomment %}
+                <td><a style="color:#950740" href="{% url 'institution_news_delete' school.pk i.news_code %}">Delete</a></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
+        {% comment %} <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_download' %}"><b>Download CSV Format</b></a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_create' school.pk %}">Add</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_upload' school.pk %}">Upload</a>  {% endcomment %}
+            <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'institution_news_create' school.pk %}">Add</a>
+
     </div>
-    {% block content1 %}
-    {% endblock %}
+
+    <h3 class="text-center" style="font-family:sans-serif;"> Recent Activities</h3>
+   <div class="container">
+    
+        <table class="table table-hover table-sm table-dark;">
+            <tbody id="myTable" align="center">
+                <tr style= "background-color:#950740; color:white;">
+                    <th >Activity</th>
+                    <th>Date</th>
+                    <th>Picture</th>
+                    <th>Action</th>
+                </tr>
+                {% for j in activities %}
+                    <tr style= "background-color:#C5C6C7; color:black;">
+                        <td>{{ j.activity_name }}</td>
+                        <td>{{ j.Date }}</td>
+                        <td><img src="{% static './' %}{{j.activity_pics}}" width="500px"></td>
+                        <td><a style="color:#950740" href="{% url 'institution_activity_delete' school.pk j.activity_code %}">Delete</a></td>
+
+                        {% comment %} <td><a style="color:#950740" href="{% url 'student_detail' i.school_name.pk i.gr %}">See Details</a></td> {% endcomment %}
+                        {% comment %} <td><a style="color:#950740" href="{% url 'student_edit' i.school_name.pk i.gr %}">Edit</a></td> {% endcomment %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% comment %} <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_download' %}"><b>Download CSV Format</b></a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_create' school.pk %}">Add</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_upload' school.pk %}">Upload</a>  {% endcomment %}
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'institution_activity_create' school.pk %}">Add</a>
+
+    </div>
 {% endblock %}

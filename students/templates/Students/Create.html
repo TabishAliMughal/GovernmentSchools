@@ -1,0 +1,77 @@
+{% extends 'MainPage.html' %}
+{% load i18n admin_urls %}
+{% block content %}
+<form method = "POST">
+    {% csrf_token %}
+    <div class="container">
+        <h1 style="color:#950740";><b>Add Student</b></h1>
+        <table class="table table-hover table-sm table-dark">
+            <tbody id="myTable" align="center" style= "background-color:#C5C6C7; color:black;">
+                <tr>
+                    <th>GR </th>
+                    <td>{{ user_form.gr }}</td>
+                </tr>
+                <tr>
+                    <th>Name </th>
+                    <td>{{ user_form.name }}</td>
+                </tr>
+                <tr>
+                    <th>Father Name </th>
+                    <td>{{ user_form.father_name }}</td>
+                </tr>
+                <tr>
+                    <th>Gender </th>
+                    <td>{{ user_form.gender }}</td>
+                </tr>
+                <tr>
+                    <th>Father CNIC No </th>
+                    <td>{{ user_form.father_cnic_no }}</td>
+                </tr>
+                <tr>
+                    <th>Contact Number </th>
+                    <td>{{ user_form.father_contact_no }}</td>
+                </tr>
+                <tr>
+                    <th>Address </th>
+                    <td>{{ user_form.address }}</td>
+                </tr>
+                <tr>
+                    <th> Class </th>
+                    <td>{{ user_form.Class }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth </th>
+                    <td><input type="date" name="date_birth"/></td>
+                </tr>
+                
+                <tr>
+                    <th>Date of Admission</th>
+                    <td><input type="date" name="date_admission"/></td>
+                </tr>
+                <tr>
+                    <th>Date of leaving School</th>
+                    <td><input type="date" name="date_leaving_school"/></td>
+                </tr>
+                <tr>
+                    <th>Reason Of Leaving</th>
+                    <td>{{ user_form.Reason_of_leaving }}</td>
+                </tr>
+                <tr>
+                    <th>Religion</th>
+                    <td>{{ user_form.religion }}</td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><input style="background-color:#950740; color:white;" class="btn btn-primary" type ="submit" value="Save"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_list' school.pk %}"><b>Back</b></a>
+    </div>
+</form>
+
+
+        
+
+        
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "MainPage.html" %}
+{% block content %}
+    <h3 class="text-center" style="font-family:sans-serif;">All  Students</h3>
+    <div class="container">
+    
+        <table class="table table-hover table-sm table-dark;">
+            <tbody id="myTable" align="center">
+                <tr style= "background-color:#950740; color:white;">
+                    <th >Gr Number</th>
+                    <th>Name</th>
+                    <th>Father</th>
+                    <th>Class</th>
+                    <th>Detail</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+                {% for i in students %}
+                    <tr style= "background-color:#C5C6C7; color:black;">
+                        <td><a>{{ i.gr }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.father_name }}</td>
+                        <td>{{ i.Class }}</td>
+                        <td><a style="color:#950740" href="{% url 'student_detail' i.school_name.pk i.gr %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'student_delete' i.school_name.pk i.gr %}">Delete</a></td>
+                        <td><a style="color:#950740" href="{% url 'student_edit' i.school_name.pk i.gr %}">Edit</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_download' %}"><b>Download CSV Format</b></a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_create' school.pk %}">Add</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'student_upload' school.pk %}">Upload</a>
+
+    </div>
+{% endblock %}
