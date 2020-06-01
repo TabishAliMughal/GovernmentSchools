@@ -124,7 +124,7 @@ def ManageInstitutionRoomCreateView(CreateView,school):
         })
         if user_form.is_valid:
             user_form.save()
-            return redirect('institution_room_list',int(school.pk))
+            return redirect('institution_room_list', int(school.pk))
         else:
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:

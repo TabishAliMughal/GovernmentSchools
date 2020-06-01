@@ -65,7 +65,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <div class="dropdown-divider"></div>
-                              {% comment %} <a class="dropdown-item" href="{% url 'institution_room_list' school.pk %}">Rooms</a> {% endcomment %}
+                              <a class="dropdown-item" href="{% url 'institution_room_list' school.pk %}">Rooms</a>
                               <a class="dropdown-item" href="{% url 'institution_boundrywall_list' school.pk %}">Boundry Wall</a>
                               <a class="dropdown-item" href="{% url 'institution_condition_list' school.pk %}">Conditions</a>
                               <a class="dropdown-item" href="{% url 'institution_area_list' school.pk %}">Areas</a>
@@ -85,7 +85,7 @@
                           <li class="nav-item dropdown">
                             <a class="nav-link " href="{% url 'student_list' school.pk %}"  role="button"  aria-haspopup="true" aria-expanded="false">
                               Students
-                            </a>
+                            </a> 
                           </li>
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

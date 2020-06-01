@@ -5,7 +5,7 @@ from .models import *
 class StudentCreateForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = {
+        fields = [
             'school_name',
             'gr',
             'name',
@@ -20,4 +20,4 @@ class StudentCreateForm(forms.ModelForm):
             'date_leaving_school',
             'Reason_of_leaving',
             'religion',
-        }
+        ]
