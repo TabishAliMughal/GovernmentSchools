@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
 ]
 
 
-# import django_heroku
+import django_heroku
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
