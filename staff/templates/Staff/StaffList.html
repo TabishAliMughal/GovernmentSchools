@@ -29,8 +29,8 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% comment %} <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_upload' school.pk type.pk %}">Upload</a>
-        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_download' %}">Download CSV Format</a> {% endcomment %}
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_upload' school.pk type.pk %}">Upload</a>
+        <a style="background-color:#950740; color:white;" class="btn btn-primary" href="{% url 'staff_download' %}">Download CSV Format</a>
     <a style="background-color:#950740; color:white;" class="btn btn-primary"  href="{% url 'staff_create' school.pk type.pk %}">Add</a>
 
     </div>

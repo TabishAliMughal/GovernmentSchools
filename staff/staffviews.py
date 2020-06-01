@@ -99,9 +99,10 @@ def ManageInstitutionStaffDetailView(DetailView,school, employ):
 def ManageInstitutionStaffDeleteView(DeleteView, staff,institution):
     todelete = get_object_or_404(Employ,persionalnumber = int(staff))
     type = todelete.type.pk
-    user = todelete.user.pk
-    usertodelete = get_object_or_404(User, pk = int(user))
-    usertodelete.delete()
+    if str(todelete.user) != 'None':
+        user = todelete.user.pk
+        usertodelete = get_object_or_404(User, pk = int(user))
+        usertodelete.delete()
     todelete.delete()
     return redirect('institution_staff_list',institution,type)
 
@@ -296,14 +297,12 @@ def ManageStaffDocumentsCreateView(CreateView,teacher):
 def staff_upload(request, school, type):
     group = request.user.groups.values('name')
     template = "Staff/upload.html"
+    school = get_object_or_404(Institution , pk = int(school))
     selecttype = get_object_or_404(StaffType , pk = int(type))
 
-    prompt = {
-        'order': 'Order of the CSV should be name, fathername, gender, designation, currentbps, persionalnumber, cnic, contact, dateofbirth,dateofapplication, dateofjoin, dateofmedical, dateofregularistation, bpsatfirstjoin, qualification, domicile, matricpassingyear, interpassingyear, graduationyear, otheraccademics, bedpassingyear, bedresultdate, otherprofessionalqualification, biometricverified, status, interdistricttransfer, dateofjoinindivision, dateofretirement, remarks, uc, prefix, institution, address, headname, head, training ' 
-    }
 
     if request.method == "GET":
-        return render(request, template, prompt)
+        return render(request, template)
 
     csv_file = request.FILES['file']
 
@@ -313,58 +312,172 @@ def staff_upload(request, school, type):
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
+    for i in Employ.objects.all():
+        if str(i.institution.pk) == str(school.pk):
+            i.delete()
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Employ.objects.update_or_create(
-            name = column[0],
-            fathername = column[1],
-            gender = column[2],
-            designation = column[3],
-            currentbps = column[4],
-            persionalnumber = column[5],
-            cnic = column[6],
-            contact = column[7],
-            dateofbirth = column[8],
-            dateofapplication = column[9],
-            dateofjoin = column[10],
-            dateofmedical = column[11],
-            dateofregularistation = column[12],
-            bpsatfirstjoin = column[13],
-            qualification = column[14],
-            domicile = column[15],
-            matricpassingyear = column[16],
-            interpassingyear = column[17],
-            graduationyear = column[18],
-            otheraccademics = column[19],
-            bedpassingyear = column[20],
-            bedresultdate = column[21],
-            otherprofessionalqualification = column[22],
-            biometricverified = column[23],
-            status = column[24],
-            interdistricttransfer = column[25],
-            dateofjoinindivision = column[26],
-            dateofretirement = column[27],
-            remarks = column[28],
-            uc  = column[29],
-            prefix = column[30],
-            institution = column[31],
-            address = column[32],
-            headname = column[33],
-            head = column[34],
-            training = column[35],
+        selectedtype = get_object_or_404(StaffType , type = column[36])
+        nam = ''
+        for i in column[0]:
+            if i != ' ':
+                nam = str(nam)+str(i.lower())
+        pas = '{}@123'.format(column[5])
+        form = CreateUserForm({
+            'username' : nam.lower() ,
+            'email' : '{}@gmail.com'.format((nam.lower())) ,
+            'password1' : str(pas) , 
+            'password2' : str(pas) ,
+        })
+        form.save()
+        user = get_object_or_404(User , username = nam )
+        user.groups.add(selectedtype.group.pk)
 
-        )
+        if column[2] == "Male" or column[2] == "M":
+            gen = "M"
+        else:
+            gen = "F"
+        if column[24] == "Active" or column[24] == "A":
+            sta = "A"
+        else:
+            sta = "I"
+        if column[25] == "Yes" or column[25] == "Y":
+            inter = "Y"
+        else:
+            inter = "N"
+        created = ManageSchoolStaffCreateForm({
+            'user': user.pk ,
+            'name' : column[0],
+            'fathername' : column[1],
+            'gender' : gen,
+            'designation' : column[3],
+            'currentbps' : column[4],
+            'persionalnumber' : column[5],
+            'cnic' : column[6],
+            'contact' : column[7],
+            'dateofbirth' : column[8],
+            'dateofapplication' : column[9],
+            'dateofjoin' : column[10],
+            'dateofmedical' : column[11],
+            'dateofregularistation' : column[12],
+            'bpsatfirstjoin' : column[13],
+            'qualification' : get_object_or_404(Qualification , qualificationname = column[14]).pk ,
+            'domicile' : get_object_or_404(Division , divisionname = column[15]).pk ,
+            'matricpassingyear':  column[16],
+            'interpassingyear':  column[17],
+            'graduationyear' : column[18],
+            'otheraccademics' : column[19],
+            'bedpassingyear' : column[20],
+            'bedresultdate' : column[21],
+            'otherprofessionalqualification' : column[22],
+            'biometricverified' : column[23],
+            'status' : sta,
+            'interdistricttransfer' : inter,
+            'dateofjoinindivision' : column[26],
+            'dateofretirement' : column[27],
+            'remarks' : column[28],
+            'uc'  : get_object_or_404(UnionCouncil , ucname = column[29]).pk ,
+            'prefix' : column[30],
+            'institution' : get_object_or_404(Institution , name = column[31]).pk ,
+            'address' : column[32],
+            'headname' : column[33],
+            'head' : column[34],
+            'training' : column[35],
+            'type': get_object_or_404(StaffType , type = column[36]).pk ,
+
+        })
     # print(created)
+        created.save()
     context = {'staff': 'Added Successfully', 'group':group, 'school':school, 'type':selecttype }
-    return render(request, template, context)
+    return render(request, 'Staff/uploaded.html', context)
 
 
 def staff_download(request):
     
     items = Employ.objects.all()
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="students.csv"'
+    response['Content-Disposition'] = 'attachment; filename="TeachingStaff.csv"'
 
     writer = csv.writer(response, delimiter=',')
-    writer.writerow([ 'name','fathername','gender','designation','currentbps','persionalnumber','cnic','contact','dateofbirth','dateofapplication','dateofjoin','dateofmedical', 'dateofregularistation', 'bpsatfirstjoin', 'qualification', 'domicile', 'matricpassingyear', 'interpassingyear', 'graduationyear', 'otheraccademics', 'bedpassingyear', 'bedresultdate', 'otherprofessionalqualification', 'biometricverified', 'status', 'interdistricttransfer', 'dateofjoinindivision', 'dateofretirement', 'remarks', 'uc', 'prefix', 'institution', 'address', 'headname', 'head', 'training',])
-
+    fields = ( 
+        'name',
+        'fathername',
+        'gender',
+        'designation',
+        'currentbps',
+        'persionalnumber',
+        'cnic',
+        'contact',
+        'dateofbirth',
+        'dateofapplication',
+        'dateofjoin',
+        'dateofmedical', 
+        'dateofregularistation',
+        'bpsatfirstjoin',
+        'qualification', 
+        'domicile', 
+        'matricpassingyear', 
+        'interpassingyear', 
+        'graduationyear', 
+        'otheraccademics', 
+        'bedpassingyear', 
+        'bedresultdate', 
+        'otherprofessionalqualification', 
+        'biometricverified', 
+        'status', 
+        'interdistricttransfer', 
+        'dateofjoinindivision', 
+        'dateofretirement', 
+        'remarks', 
+        'uc', 
+        'prefix', 
+        'institution',
+        'address', 
+        'headname', 
+        'head', 
+        'training',
+        'type',
+        )
+    data = Employ.objects.all()
+    writer = csv.DictWriter(response , fieldnames = fields)
+    writer.writeheader()
+    for i in data:
+        writer.writerow({
+            'name': i.name , 
+            'fathername':i.fathername ,
+            'gender': i.gender ,
+            'designation':i.designation ,
+            'currentbps':i.currentbps ,
+            'persionalnumber':i.persionalnumber ,
+            'cnic':i.cnic ,
+            'contact':i.contact ,
+            'dateofbirth':i.dateofbirth ,
+            'dateofapplication':i.dateofapplication ,
+            'dateofjoin':i.dateofjoin ,
+            'dateofmedical':i.dateofmedical,
+            'dateofregularistation':i.dateofregularistation,
+            'bpsatfirstjoin': i.bpsatfirstjoin,
+            'qualification': i.qualification,
+            'domicile': i.domicile,
+            'matricpassingyear': i.matricpassingyear,
+            'interpassingyear': i.interpassingyear,
+            'graduationyear': i.graduationyear,
+            'otheraccademics': i.otheraccademics,
+            'bedpassingyear': i.bedpassingyear,
+            'bedresultdate': i.bedresultdate,
+            'otherprofessionalqualification': i.otherprofessionalqualification,
+            'biometricverified': i.biometricverified,
+            'status': i.status,
+            'interdistricttransfer': i.interdistricttransfer,
+            'dateofjoinindivision': i.dateofjoinindivision,
+            'dateofretirement': i.dateofretirement,
+            'remarks': i.remarks,
+            'uc': i.uc,
+            'prefix': i.prefix,
+            'institution': i.institution,
+            'address': i.address,
+            'headname': i.headname,
+            'head': i.head,
+            'training': i.training,
+            'type' : i.type,
+            })
     return response
