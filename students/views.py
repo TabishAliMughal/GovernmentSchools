@@ -40,23 +40,6 @@ def ManageStudentDetailView(DetailView,school, gr):
     }
     return render(DetailView,'Students/Detail.html',context)
 
-
-# def ManageStudentDeleteView(DeleteView, school, gr):
-#     group = DeleteView.user.groups.values('name')
-#     school = get_object_or_404(Institution,pk=school)
-#     Student.objects.filter(gr=gr).delete()
-#     # stud = get_list_or_404(Student , school_name_id = int(school.pk))
-#     stud = []
-#     for i in Student.objects.all():
-#         if str(i.school_name_id) == str(school.pk):
-#             stud.append(i)
-#     context = {
-#         'student' : stud ,
-#         'school' : school ,
-#         'group': group ,
-#     }
-#     return render(DeleteView, 'Students/List.html', context) 
-
 def ManageStudentDeleteView(DeleteView, school, gr):
     group = DeleteView.user.groups.values('name')
     Student.objects.filter(gr=gr).delete()
@@ -102,7 +85,6 @@ def ManageStudentCreateView(CreateView,school):
             'religion' : data.get('religion') ,
         })
         if user_form.is_valid:
-            # print(user_form)
             user_form.save()
             return redirect('student_list', int(school.pk))
         else:
@@ -197,8 +179,7 @@ def student_download(request):
     writer = csv.DictWriter(response , fieldnames = fields)
     writer.writeheader()
     for i in data:
-
         writer.writerow({'gr': i.gr , 'name':i.name ,'father_name':i.father_name ,'gender': i.gender ,'father_cnic_no':i.father_cnic_no ,'father_contact_no':i.father_contact_no ,'address':i.address ,'Class':i.Class ,'date_birth':i.date_birth ,'date_admission':i.date_admission ,'date_leaving_school':i.date_leaving_school ,'Reason_of_leaving':i.Reason_of_leaving ,'religion':i.religion})
-        return response
+    return response
 
 

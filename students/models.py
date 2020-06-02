@@ -5,7 +5,7 @@ from django.urls import reverse
 # Create your models here.
 class Class(models.Model):
     class_code = models.AutoField(unique = True, primary_key= True)
-    classes = models.CharField(max_length=20,  default="none")
+    classes = models.CharField(max_length=20)
     def __str__(self):
         return self.classes
 
@@ -16,7 +16,7 @@ class Student(models.Model):
     father_name = models.CharField(max_length=300)
     gender = models.CharField(max_length=10, choices=(('M', 'Male'),('F', 'Female')))
     father_cnic_no = models.IntegerField()
-    father_contact_no = models.IntegerField()
+    father_contact_no = models.CharField(max_length = 11)
     address = models.CharField(max_length=300)
     Class = models.ForeignKey(Class, on_delete=models.CASCADE)
     date_birth = models.DateField()
