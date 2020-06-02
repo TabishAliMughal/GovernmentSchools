@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'schools.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gov-school',
+        'USER': 'comsoft',
+        'PASSWORD': 'Admin@123',
+        'HOST' : '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -127,6 +131,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -138,7 +144,7 @@ import django_heroku
 django_heroku.settings(locals())
 
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'

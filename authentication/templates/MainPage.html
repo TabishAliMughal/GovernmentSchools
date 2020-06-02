@@ -26,7 +26,7 @@
                   <ul class="navbar-nav mr-auto">
                     {% if request.user.is_authenticated %}
                       {% for i in group %}
-                        {% if i.name == 'Teacher' or i.name == 'Admin' %}
+                        {% if i.name == 'Admin' %}
                           <li class="nav-item dropdown">
                             <a class="nav-link" href="{% url 'institutions_list' %}">
                               All Schools
@@ -57,47 +57,46 @@
                               <a class="dropdown-item" href="{% url 'roomtype_list' %}">RoomType</a>
                             </div>
                           </li>
+                        {% endif %}
+                        {% if i.name == 'SchoolPrincipal' or i.name == 'Admin' %}
                           {% if school %}
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Buildings
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="{% url 'institution_room_list' school.pk %}">Rooms</a>
-                              <a class="dropdown-item" href="{% url 'institution_boundrywall_list' school.pk %}">Boundry Wall</a>
-                              <a class="dropdown-item" href="{% url 'institution_condition_list' school.pk %}">Conditions</a>
-                              <a class="dropdown-item" href="{% url 'institution_area_list' school.pk %}">Areas</a>
-                              <a class="dropdown-item" href="{% url 'institution_water_availability_list' school.pk %}">Water Availability</a>
-                              <a class="dropdown-item" href="{% url 'institution_ROPlant_availability_list' school.pk %}">ROPlant Availability</a>
-                              <a class="dropdown-item" href="{% url 'institution_dispenser_availability_list' school.pk %}">Dispenser Availability</a>
-                              <a class="dropdown-item" href="{% url 'institution_playground_list' school.pk %}">Playgrounds</a>
-                              <a class="dropdown-item" href="{% url 'institution_plantation_list' school.pk %}">Plantation</a>
-                              <a class="dropdown-item" href="{% url 'institution_toilet_list' school.pk %}">Toilets</a>
-                              <a class="dropdown-item" href="{% url 'institution_wiring_list' school.pk %}">Wiring</a>
-                              <a class="dropdown-item" href="{% url 'institution_plumbing_list' school.pk %}">Plumbiing </a>
-                              <a class="dropdown-item" href="{% url 'institution_senitary_list' school.pk %}">Senitary </a>
-                              <a class="dropdown-item" href="{% url 'institution_electricity_list' school.pk %}">Electricity </a>
-                              <a class="dropdown-item" href="{% url 'institution_furniture_list' school.pk %}">Furniture </a>
-                            </div>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link " href="{% url 'student_list' school.pk %}"  role="button"  aria-haspopup="true" aria-expanded="false">
-                              Students
-                            </a> 
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Staff
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Teaching Staff</a>
-                            {% comment %} <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Non-Teaching Staff</a> {% endcomment %}
-
-
-
-                            </div>
-                          </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Buildings
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'institution_room_list' school.pk %}">Rooms</a>
+                                <a class="dropdown-item" href="{% url 'institution_boundrywall_list' school.pk %}">Boundry Wall</a>
+                                <a class="dropdown-item" href="{% url 'institution_condition_list' school.pk %}">Conditions</a>
+                                <a class="dropdown-item" href="{% url 'institution_area_list' school.pk %}">Areas</a>
+                                <a class="dropdown-item" href="{% url 'institution_water_availability_list' school.pk %}">Water Availability</a>
+                                <a class="dropdown-item" href="{% url 'institution_ROPlant_availability_list' school.pk %}">ROPlant Availability</a>
+                                <a class="dropdown-item" href="{% url 'institution_dispenser_availability_list' school.pk %}">Dispenser Availability</a>
+                                <a class="dropdown-item" href="{% url 'institution_playground_list' school.pk %}">Playgrounds</a>
+                                <a class="dropdown-item" href="{% url 'institution_plantation_list' school.pk %}">Plantation</a>
+                                <a class="dropdown-item" href="{% url 'institution_toilet_list' school.pk %}">Toilets</a>
+                                <a class="dropdown-item" href="{% url 'institution_wiring_list' school.pk %}">Wiring</a>
+                                <a class="dropdown-item" href="{% url 'institution_plumbing_list' school.pk %}">Plumbiing </a>
+                                <a class="dropdown-item" href="{% url 'institution_senitary_list' school.pk %}">Senitary </a>
+                                <a class="dropdown-item" href="{% url 'institution_electricity_list' school.pk %}">Electricity </a>
+                                <a class="dropdown-item" href="{% url 'institution_furniture_list' school.pk %}">Furniture </a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link " href="{% url 'student_list' school.pk %}"  role="button"  aria-haspopup="true" aria-expanded="false">
+                                Students
+                              </a> 
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Staff
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Teaching Staff</a>
+                              {% comment %} <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Non-Teaching Staff</a> {% endcomment %}
+                              </div>
+                            </li>
                           {% endif %}
                         {% endif %}
                       {% endfor %}
