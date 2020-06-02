@@ -215,7 +215,6 @@ def ManageInstitutionBuildingConditionCreateView(CreateView,school):
         }
     return render(CreateView,'Buildings/BuildingCondition/Create.html',context)
 
-
 def ManageConditionListView(ListView,school):
     group = ListView.user.groups.values('name')
     school = get_object_or_404(Institution , pk = int(school))
@@ -417,7 +416,6 @@ def ManageInstitutionPlayGroundCreateView(CreateView,school):
             'group': group ,
         }
     return render(CreateView,'Buildings/PlayGround/Create.html',context)
-
 
 def ManagePlaygroundListView(ListView,school):
     group = ListView.user.groups.values('name')
@@ -680,6 +678,16 @@ def ManageElectricityListView(ListView,school):
     }
     return render(ListView,'Buildings/ElectricityAvailiblity/List.html',context)
 
+def ManageInstitutionElectricityDetailView(DetailView,electricity):
+    group = DetailView.user.groups.values('name')
+    electricity = get_object_or_404(InstitutionElectricityAvailiblity,pk=electricity)
+    
+    context = {
+        'electricity' : electricity ,
+        'group': group ,
+    }
+    return render(DetailView,'Buildings/ElectricityAvailiblity/Detail.html',context)
+
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Admin','SchoolPrincipal'])
 def ManageInstitutionFurnitureCreateView(CreateView,school):
@@ -726,7 +734,13 @@ def ManageFurnitureListView(ListView,school):
     }
     return render(ListView,'Buildings/Furniture/List.html',context)
 
-
-
+def ManageInstitutionFurnitureDetailView(DetailView,furniture):
+    group = DetailView.user.groups.values('name')
+    furniture = get_object_or_404(InstitutionFurniture,pk=furniture)
+    context = {
+        'furniture' : furniture ,
+        'group': group ,
+    }
+    return render(DetailView,'Buildings/Furniture/Detail.html',context)
 
 
