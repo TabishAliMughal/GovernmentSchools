@@ -91,7 +91,9 @@
                               Staff
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Teaching Staff</a>
+                            {% for k in types %}
+                              <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk k.pk %}">{{ k }}</a>
+                            {% endfor %}
                             {% comment %} <a class="dropdown-item" href="{% url 'institution_staff_list' school.pk user.pk %}">Non-Teaching Staff</a> {% endcomment %}
 
 

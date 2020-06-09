@@ -17,6 +17,7 @@ def ManageAllInstitutionsListView(ListView):
     group = ListView.user.groups.values('name')
     schools = Institution.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'schools' : schools ,
         'group': group ,
     }
@@ -50,6 +51,7 @@ def ManageAllInstitutionsDetailForAdminView(DetailView,school):
     # print(picture)
     
     context = {
+        'types' : StaffType.objects.all() ,
         'picture': picture, 
         'activities': activities,
         'news':news,
@@ -78,6 +80,7 @@ def ManageNewsCreateView(CreateView,school):
             return render(CreateView,'Institutions/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -106,6 +109,7 @@ def ManageActivityCreateView(CreateView,school):
             return render(CreateView,'Institutions/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -154,12 +158,14 @@ def ManageInstututeCreateView(CreateView):
         if user_form.is_valid():
             user_form.save()
             context = {
+        'types' : StaffType.objects.all() ,
                 'return': 'Has Been Added Successfully' ,
                 'group': group ,
             } 
             return render(CreateView, 'Institutions/Created.html', context)
         else:
             context = {
+        'types' : StaffType.objects.all() ,
                 'return ': 'Is Not Valid' ,
                 'group': group ,
             }
@@ -167,6 +173,7 @@ def ManageInstututeCreateView(CreateView):
     else:
         user_form = ManageInstituteCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form':user_form ,
             'group': group ,
         } 
@@ -177,6 +184,7 @@ def ManageInstitutionElectricityDetailView(DetailView,electricity):
     electricity = get_object_or_404(InstitutionElectricityAvailiblity,pk=electricity)
     
     context = {
+        'types' : StaffType.objects.all() ,
         'electricity' : electricity ,
         'group': group ,
     }
@@ -187,6 +195,7 @@ def ManageInstitutionFurnitureDetailView(DetailView,furniture):
     group = DetailView.user.groups.values('name')
     furniture = get_object_or_404(InstitutionFurniture,pk=furniture)
     context = {
+        'types' : StaffType.objects.all() ,
         'furniture' : furniture ,
         'group': group ,
     }

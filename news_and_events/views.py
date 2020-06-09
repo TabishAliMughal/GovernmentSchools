@@ -21,6 +21,7 @@ def ManageNewsListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             news.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'news': news,
         'group': group ,
