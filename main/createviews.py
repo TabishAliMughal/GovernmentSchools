@@ -19,6 +19,7 @@ def ManageProvenceCreateView(CreateView):
     else:
         form = ManageProvenceCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'Provence' ,
             'form' : form ,
             'group': group ,
@@ -37,6 +38,7 @@ def ManageDivisionCreateView(CreateView):
     else:
         form = ManageDivisionCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'Division' ,
             'form' : form ,
             'group': group ,
@@ -55,6 +57,7 @@ def ManageDistrictCreateView(CreateView):
     else:
         form = ManageDistrictCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'District' ,
             'form' : form ,
             'group': group ,
@@ -73,6 +76,7 @@ def ManageTehsilCreateView(CreateView):
     else:
         form = ManageTehsilCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'Tehsil' ,
             'form' : form ,
             'group': group ,
@@ -91,6 +95,7 @@ def ManageUnionCouncilCreateView(CreateView):
     else:
         form = ManageUnionCouncilCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'UnionCouncil' ,
             'form' : form ,
             'group': group ,
@@ -109,6 +114,7 @@ def ManageQualificationCreateView(CreateView):
     else:
         form = ManageQualificationCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'Qualification' ,
             'form' : form ,
             'group': group ,
@@ -127,6 +133,7 @@ def ManageDocumentTypeCreateView(CreateView):
     else:
         form = ManageDocumentTypeCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'DocumentType' ,
             'form' : form ,
             'group': group ,
@@ -145,6 +152,7 @@ def ManageStaffTypeCreateView(CreateView):
     else:
         form = ManageStaffTypeCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'StaffType' ,
             'form' : form ,
             'group': group ,
@@ -163,6 +171,7 @@ def ManageRoomTypeCreateView(CreateView):
     else:
         form = ManageRoomTypeCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'name' : 'RoomType' ,
             'form' : form ,
             'group': group ,

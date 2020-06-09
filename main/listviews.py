@@ -11,6 +11,7 @@ def ManageProvenceListView(ListView):
     group = ListView.user.groups.values('name')
     provence = Provence.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'Provences' ,
         'provence': provence ,
         'group': group ,
@@ -21,6 +22,7 @@ def ManageDivisionListView(ListView):
     group = ListView.user.groups.values('name')
     division = Division.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'Divisions' ,
         'division': division ,
         'group': group ,
@@ -31,6 +33,7 @@ def ManageDistrictListView(ListView):
     group = ListView.user.groups.values('name')
     district = District.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'Districts' ,
         'district': district ,
         'group': group ,
@@ -41,6 +44,7 @@ def ManageTehsilListView(ListView):
     group = ListView.user.groups.values('name')
     tehsil = Tehsil.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'Tehsils' ,
         'tehsil': tehsil ,
         'group': group ,
@@ -51,6 +55,7 @@ def ManageUnionCouncilListView(ListView):
     group = ListView.user.groups.values('name')
     unioncouncil = UnionCouncil.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'UnionCouncils' ,
         'unioncouncil': unioncouncil ,
         'group': group ,
@@ -61,6 +66,7 @@ def ManageQualificationListView(ListView):
     group = ListView.user.groups.values('name')
     qualification = Qualification.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'Qualifications' ,
         'qualification': qualification ,
         'group': group ,
@@ -71,6 +77,7 @@ def ManageDocumentTypeListView(ListView):
     group = ListView.user.groups.values('name')
     documentType = DocumentType.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'DocumentTypes' ,
         'documentType': documentType ,
         'group': group ,
@@ -81,6 +88,7 @@ def ManageStaffTypeListView(ListView):
     group = ListView.user.groups.values('name')
     stafftype = StaffType.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'StaffTypes' ,
         'stafftype': stafftype ,
         'group': group ,
@@ -91,6 +99,7 @@ def ManageRoomTypeListView(ListView):
     group = ListView.user.groups.values('name')
     roomtype = RoomType.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'name' : 'RoomTypes' ,
         'roomtype': roomtype ,
         'group': group ,

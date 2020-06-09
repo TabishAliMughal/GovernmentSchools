@@ -33,6 +33,7 @@ def Register(request,id):
 		else:
     			return render(request , 'Authentication/NotValid.html')
 	context = {
+        'types' : StaffType.objects.all() ,
 		'type':id,
         'form':form,
         }
@@ -49,7 +50,8 @@ def loginPage(request):
 			return redirect('main')
 		else:
 			messages.info(request, 'Username OR password is incorrect')
-	context = {}
+	context = {
+        'types' : StaffType.objects.all() ,}
 	return render(request, 'Authentication/LoginPage.html', context)
 
 def logoutUser(request):

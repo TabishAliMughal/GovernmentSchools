@@ -22,6 +22,7 @@ def ManageStudentListView(ListView,school):
         if str(i.school_name.pk) == str(school.pk):
             students.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'students': students,
         'group': group ,
@@ -34,6 +35,7 @@ def ManageStudentDetailView(DetailView,school, gr):
     school = get_object_or_404(Institution,pk=school)
     student = get_object_or_404(Student, gr = gr)
     context = {
+        'types' : StaffType.objects.all() ,
         'student':student,
         'school' : school ,
         'group': group ,
@@ -89,6 +91,7 @@ def ManageStudentCreateView(CreateView,school):
             return redirect('student_list', int(school.pk))
         else:
             context = {
+        'types' : StaffType.objects.all() ,
                 'return ': 'Is Not Valid'
             }
             return render(CreateView, 'Students/Created.html', context)
@@ -96,6 +99,7 @@ def ManageStudentCreateView(CreateView,school):
         # print(school)
         user_form = StudentCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form':user_form ,
             'school': school,
             'group': group ,
@@ -150,7 +154,8 @@ def student_upload(request, school):
         })
     # print(created)
         created.save()
-    context = {'student': 'Added Successfully', 'group':group, 'school':school }
+    context = {
+        'types' : StaffType.objects.all() ,'student': 'Added Successfully', 'group':group, 'school':school }
     return render(request, 'Students/uploaded.html', context)
 
 

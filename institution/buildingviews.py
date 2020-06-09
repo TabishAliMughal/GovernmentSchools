@@ -77,6 +77,7 @@ def ManageInstitutionBuildingSelectView(SelectView,school):
         if str(i.institution.pk) == str(school.pk):
             Furniture.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'Rooms' : Rooms ,
         'BoundaryWall' : BoundaryWall ,
         'BuildingCondition' : BuildingCondition ,
@@ -103,6 +104,7 @@ def ManageInstitutionBuildingSelectToAddView(SelectView,school):
     group = SelectView.user.groups.values('name')
     school = get_object_or_404(Institution,pk=school)
     context = {
+        'types' : StaffType.objects.all() ,
         'school' : school ,
         'group': group ,
     }
@@ -129,6 +131,7 @@ def ManageInstitutionRoomCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -143,6 +146,7 @@ def ManageRoomListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             rooms.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'rooms': rooms,
         'group': group ,
@@ -169,6 +173,7 @@ def ManageInstitutionBoundryWallCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -183,6 +188,7 @@ def ManageBoundryWallListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             boundrywall.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'boundrywall': boundrywall,
         'group': group ,
@@ -209,6 +215,7 @@ def ManageInstitutionBuildingConditionCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -223,6 +230,7 @@ def ManageConditionListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             condition.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'condition': condition,
         'group': group ,
@@ -249,6 +257,7 @@ def ManageInstitutionAreaCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -263,6 +272,7 @@ def ManageAreaListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             area.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'area': area,
         'group': group ,
@@ -289,6 +299,7 @@ def ManageInstitutionWaterAvailabilityCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -303,6 +314,7 @@ def ManageWaterAvailabilityListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             water.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'water': water,
         'group': group ,
@@ -330,6 +342,7 @@ def ManageInstitutionROPlantAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -344,6 +357,7 @@ def ManageROPlantAvailabilityListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             ro.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'ro': ro,
         'group': group ,
@@ -371,6 +385,7 @@ def ManageInstitutionWaterDispenserAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -385,6 +400,7 @@ def ManageDispenserAvailabilityListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             dispenser.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'dispenser': dispenser,
         'group': group ,
@@ -411,6 +427,7 @@ def ManageInstitutionPlayGroundCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -425,6 +442,7 @@ def ManagePlaygroundListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             playground.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'playground': playground,
         'group': group ,
@@ -452,6 +470,7 @@ def ManageInstitutionPlantationCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -466,6 +485,7 @@ def ManagePlantationListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             plantation.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'plantation': plantation,
         'group': group ,
@@ -493,6 +513,7 @@ def ManageInstitutionToiletAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -507,6 +528,7 @@ def ManageToiletListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             toilet.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'toilet': toilet,
         'group': group ,
@@ -533,6 +555,7 @@ def ManageInstitutionWiringAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -547,6 +570,7 @@ def ManageWiringListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             wiring.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'wiring': wiring,
         'group': group ,
@@ -573,6 +597,7 @@ def ManageInstitutionPlumbingAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -587,6 +612,7 @@ def ManagePlumbingListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             plumbing.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'plumbing': plumbing,
         'group': group ,
@@ -612,6 +638,7 @@ def ManageInstitutionSenitaryAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -626,6 +653,7 @@ def ManageSenitaryListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             senitary.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'senitary': senitary,
         'group': group ,
@@ -658,6 +686,7 @@ def ManageInstitutionElectricityAvailabiltyCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -672,6 +701,7 @@ def ManageElectricityListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             electricity.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'electricity': electricity,
         'group': group ,
@@ -714,6 +744,7 @@ def ManageInstitutionFurnitureCreateView(CreateView,school):
             return render(CreateView,'Buildings/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'user_form' : form ,
             'school' : school ,
             'group': group ,
@@ -728,6 +759,7 @@ def ManageFurnitureListView(ListView,school):
         if str(i.institution.pk) == str(school.pk):
             furniture.append(i)
     context = {
+        'types' : StaffType.objects.all() ,
         'school': school ,
         'furniture': furniture,
         'group': group ,

@@ -8,15 +8,15 @@
                 <tr style= "background-color:#950740; color:white;">
                     <th>For</th>
                     <th>Dual Desk Quantity</th>
-                    {% comment %} <th>Detail</th>
-                    <th>Delete</th>
+                    <th>Detail</th>
+                    {% comment %} <th>Delete</th>
                     <th>Edit</th> {% endcomment %}
                 </tr>
                 {% for i in furniture %}
                     <tr style= "background-color:#C5C6C7; color:black;">
                         <td>{% if i.therefor == 'S'%}Students{% else %}Teacher{% endif %}</td>
                         <td>{{ i.dualdeskqty }}</td>
-                        <td><a style="color:#950740" href="{% url 'institution_furniture_detail'  school.pk  %}">See Details</a></td>
+                        <td><a style="color:#950740" href="{% url 'institution_furniture_detail' i.pk  %}">See Details</a></td>
                         {% comment %} <td><a style="color:#950740" href="{% url 'student_delete' i.school_name.pk i.gr %}">Delete</a></td> {% endcomment %}
                         {% comment %} <td><a style="color:#950740" href="{% url 'student_edit' i.school_name.pk i.gr %}">Edit</a></td> {% endcomment %}
                     </tr>

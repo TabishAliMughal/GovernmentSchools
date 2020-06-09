@@ -12,7 +12,7 @@
                     <th>Delete</th>
                     <th>Edit</th> {% endcomment %}
                 </tr>
-                {% for i in toilet %}
+                {% for i in wiring %}
                     <tr style= "background-color:#C5C6C7; color:black;">
                         <td>{% if i.available == 'Y' %}Yes{% else %} No {% endif %}</td>
                         <td><td>{% if i.condition == 'G'%}Good{% elif i.condition == 'R' %}Repairable{% else %}Dangerous{% endif %}</td>
