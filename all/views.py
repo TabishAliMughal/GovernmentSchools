@@ -10,6 +10,7 @@ def ManageMainView(DisplayView):
     group = DisplayView.user.groups.values('name')
     institutions = Institution.objects.all()
     context = {
+        'types' : StaffType.objects.all() ,
         'institutions': institutions ,
         'group': group ,
     }
@@ -19,6 +20,7 @@ def ManageInstitutionDetailForAllView(DetailView,school):
     group = DetailView.user.groups.values('name')
     school = get_object_or_404(Institution,pk=school)
     context = {
+        'types' : StaffType.objects.all() ,
         'school' : school ,
         'group': group ,
     }

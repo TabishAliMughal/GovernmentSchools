@@ -11,7 +11,7 @@
                     <th>Delete</th>
                     <th>Edit</th> {% endcomment %}
                 </tr>
-                {% for i in plumbing %}
+                {% for i in senitary %}
                     <tr style= "background-color:#C5C6C7; color:black;">
                         <td>{% if i.available == 'Y' %}Yes{% else %} No {% endif %}</td>
                         {% comment %} <td><a style="color:#950740" href="{% url 'student_detail' i.school_name.pk i.gr %}">See Details</a></td>

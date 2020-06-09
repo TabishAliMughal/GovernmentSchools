@@ -24,6 +24,7 @@ def ManageInstitutionStaffTypeSelectView(SelectView,school):
     types = StaffType.objects.all()
     school = get_object_or_404(Institution , pk = int(school) )
     context = {
+        'types' : StaffType.objects.all() ,
         'types' : types ,
         'school' : school ,
         'group': group ,
@@ -35,15 +36,15 @@ def ManageInstitutionStaffTypeSelectView(SelectView,school):
 def ManageInstitutionStaffListView(ProfileView,school,type):
     group = ProfileView.user.groups.values('name')
     school = get_object_or_404(Institution , pk = int(school) )
-    types = StaffType.objects.all()
     teacher = []
     currenttype = get_object_or_404(StaffType , pk = str(type))
     for i in Employ.objects.all():
-        if str(i.institution) == str(school) and str(i.type.pk) == str(type):
+        if str(i.institution.pk) == str(school.pk) and str(i.type.pk) == str(type):
             teacher.append(i)
+    print(teacher)
     context = {
+        'types' : StaffType.objects.all() ,
         'type' : currenttype ,
-        'types' : types ,
         'school':school ,
         'teacher':teacher,
         'group': group ,
@@ -55,6 +56,7 @@ def ManageInstitutionStaffDetailView(DetailView,school, employ):
     school = get_object_or_404(Institution , pk = int(school) )
     employ = get_object_or_404(Employ,pk=employ)
     context = {
+        'types' : StaffType.objects.all() ,
         'school' :school,
         'employ' : employ ,
         'group': group ,
@@ -130,6 +132,7 @@ def ManageInstitutionStaffEditView(EditView, staff,institution):
         dobed = str(employ.bedresultdate)
         # print(doa)
         context = {
+            'types' : StaffType.objects.all() ,
             'bedresultdate': dobed, 
             'dateofregularistation': dore,
             'dateofjoinindivision': dojd,
@@ -209,17 +212,20 @@ def ManageInstitutionStaffCreateView(CreateView,school,type):
         if user_form.is_valid():
             user_form.save()
             context = {
+        'types' : StaffType.objects.all() ,
                 'return': 'Has Been Added Successfully'
             } 
             return render(CreateView, 'Staff/Created.html', context)
         else:
             context = {
+        'types' : StaffType.objects.all() ,
                 'return ': 'Is Not Valid'
             }
             return render(CreateView, 'Staff/Created.html', context)
     else:
         user_form = ManageSchoolStaffCreateForm()
         context = {
+        'types' : StaffType.objects.all() ,
             'type':selectedtype ,
             'user_form':user_form ,
             'group': group ,
@@ -238,6 +244,7 @@ def ManageStaffProfileView(ProfileView,user):
     if teacher == '':
         teacher = 'No'
     context = {
+        'types' : StaffType.objects.all() ,
         'abc':abc,
         'teacher':teacher,
         'group': group ,
@@ -254,6 +261,7 @@ def ManageStaffDocumentsView(DocumentView,teacher):
             pic = str(i.picture)[7:]
             picture.append({'url':pic,'type':i.documenttype})
     context = {
+        'types' : StaffType.objects.all() ,
         'staff' : teacher ,
         'picture': picture ,
         'group': group ,
@@ -288,6 +296,7 @@ def ManageStaffDocumentsCreateView(CreateView,teacher):
             return render(CreateView,'Staff/NotValid.html',{'return':'Not Valid'})
     else:
         context = {
+        'types' : StaffType.objects.all() ,
             'form' : form ,
             'teacher' : teacher ,
             'group': group ,
@@ -387,7 +396,8 @@ def staff_upload(request, school, type):
         })
     # print(created)
         created.save()
-    context = {'staff': 'Added Successfully', 'group':group, 'school':school, 'type':selecttype }
+    context = {
+        'types' : StaffType.objects.all() ,'staff': 'Added Successfully', 'group':group, 'school':school, 'type':selecttype }
     return render(request, 'Staff/uploaded.html', context)
 
 

@@ -13,7 +13,7 @@
                     <th>Delete</th>
                     <th>Edit</th> {% endcomment %}
                 </tr>
-                {% for i in dispenser %}
+                {% for i in plantation %}
                     <tr style= "background-color:#C5C6C7; color:black;">
                         <td>{% if i.available == 'Y' %}Yes{% else %} No {% endif %}</td>
                         <td>{{ i.qtyoftrees }}</td>
