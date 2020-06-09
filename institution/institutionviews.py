@@ -61,7 +61,6 @@ def ManageAllInstitutionsDetailForAdminView(DetailView,school):
     return render(DetailView,'Institutions/HeadSelect.html',context)
 
 
-<<<<<<< HEAD
 def ManageNewsCreateView(CreateView,school):
     group = CreateView.user.groups.values('name')
     school = get_object_or_404(Institution,pk=school)
@@ -127,8 +126,6 @@ def ManageActivityDeleteView(DeleteView, school, activity_code):
     School_Activities.objects.filter(activity_code=activity_code).delete()
     return redirect('institution_detail_for_admin', school)
 
-=======
->>>>>>> 1b4c246c3dc319bf983eda0486e1e3c1fb460a96
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Admin'])
 def ManageInstututeCreateView(CreateView):
@@ -181,7 +178,6 @@ def ManageInstututeCreateView(CreateView):
             'group': group ,
         } 
         return render(CreateView, 'Institutions/Create.html',context )
-<<<<<<< HEAD
 
 def ManageInstitutionElectricityDetailView(DetailView,electricity):
     group = DetailView.user.groups.values('name')
@@ -204,5 +200,3 @@ def ManageInstitutionFurnitureDetailView(DetailView,furniture):
         'group': group ,
     }
     return render(DetailView,'Buildings/Furniture/Detail.html',context)
-=======
->>>>>>> 1b4c246c3dc319bf983eda0486e1e3c1fb460a96
