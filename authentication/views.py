@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .user_handeling import unauthenticated_user, allowed_users, admin_only
 from .forms import *
+from main.models import *
 
 @unauthenticated_user
 def AskRegister(request):
